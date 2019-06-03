@@ -1,7 +1,8 @@
 package Model;
 
 public class Fotografia {
-	private int id;
+	private int pippobaudo;
+	private String fotografo;
 	
 
 }
