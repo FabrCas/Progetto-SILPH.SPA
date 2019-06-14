@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProgettoSilphApplication {
+public class Progetto_SIW_SilphApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProgettoSilphApplication.class, args);
+		SpringApplication.run(Progetto_SIW_SilphApplication.class, args);
 	}
 
 }
