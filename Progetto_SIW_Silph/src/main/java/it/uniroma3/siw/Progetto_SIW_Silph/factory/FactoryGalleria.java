@@ -6,7 +6,6 @@ public class FactoryGalleria {
 	
 	public void creaGalleria() {
 		//TODO
-		//udjdhf
 	}
 	
 	public static FactoryGalleria getIstance() {
