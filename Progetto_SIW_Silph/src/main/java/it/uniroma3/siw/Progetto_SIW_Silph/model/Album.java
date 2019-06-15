@@ -1,8 +1,6 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.model;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +27,7 @@ public class Album {
 	
 	@OneToMany(mappedBy="album", fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.REFRESH })
-	private Map<Long,Fotografia> fotografie;
+	private List<Fotografia> fotografie;
 
 
 	public Album() {
@@ -47,10 +45,10 @@ public class Album {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Map<Long, Fotografia> getFotografie() {
+	public List <Fotografia> getFotografie() {
 		return fotografie;
 	}
-	public void setFotografie(Map<Long, Fotografia> fotografie) {
+	public void setFotografie(List<Fotografia> fotografie) {
 		this.fotografie = fotografie;
 	}
 	public List<Fotografo> getFotografi() {
