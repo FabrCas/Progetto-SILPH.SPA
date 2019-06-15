@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
-import it.uniroma3.siw.Progetto_SIW_Silph.Galleria;
 
 @Entity
 public class FunzionarioSilph {
@@ -21,8 +19,6 @@ public class FunzionarioSilph {
 	private String username;
 	@Column
 	private String password;
-	@Transient
-	private Galleria galleria;
 	
 	public FunzionarioSilph() {}
 	
@@ -49,15 +45,6 @@ public class FunzionarioSilph {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public Galleria getGalleria() {
-		return galleria;
-	}
-	public void setGalleria(Galleria galleria) {
-		this.galleria = galleria;
-	}
-	
-	
-	
+	}	
 }
 

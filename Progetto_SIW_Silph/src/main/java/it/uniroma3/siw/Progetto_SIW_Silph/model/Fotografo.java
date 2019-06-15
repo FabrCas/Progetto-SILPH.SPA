@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 @Entity
 public class Fotografo {
 	@Id
@@ -17,9 +19,9 @@ public class Fotografo {
 	private String nome;
 	@Column
 	private String cognome;
-	@Column
+	@ManyToMany
 	private List <Album> albums;
-	@Column
+	@OneToMany(mappedBy="fotografo")
 	private Map <Long,Fotografia> fotografie;
 	
 	public Fotografo() {

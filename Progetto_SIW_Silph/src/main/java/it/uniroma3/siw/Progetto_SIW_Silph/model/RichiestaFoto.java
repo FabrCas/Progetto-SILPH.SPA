@@ -8,19 +8,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 @Entity
 public class RichiestaFoto{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@Column
+	@ManyToMany()
 	private List<Fotografia> fotografie;
 	@Column
 	private String nomeUtente;
 	@Column
 	private String descrizione;
 	@Column
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	
 	public RichiestaFoto () {}

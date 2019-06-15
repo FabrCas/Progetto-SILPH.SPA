@@ -1,12 +1,11 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Fotografia {
@@ -15,11 +14,9 @@ public class Fotografia {
 	private Long id;
 	@Column
 	private String nome;
-	@Column
-	private Date data;
-	@Column
-	private String fotografo;
-	@Column 
+	@ManyToOne
+	private Fotografo fotografo;
+	@ManyToOne
 	private Album album;
 	@Column
 	private String descrizione;
@@ -43,16 +40,10 @@ public class Fotografia {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getData() {
-		return data;
-	}
-	public void setData(Date data) {
-		this.data = data;
-	}
-	public String getFotografo() {
+	public Fotografo getFotografo() {
 		return fotografo;
 	}
-	public void setFotografo(String fotografo) {
+	public void setFotografo(Fotografo fotografo) {
 		this.fotografo = fotografo;
 	}
 	public String getDescrizione() {
