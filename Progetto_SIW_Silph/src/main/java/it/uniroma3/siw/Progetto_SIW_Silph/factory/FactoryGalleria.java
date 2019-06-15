@@ -1,6 +1,5 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.factory;
 
-
 public class FactoryGalleria {
 	private static FactoryGalleria istanza;
 	
