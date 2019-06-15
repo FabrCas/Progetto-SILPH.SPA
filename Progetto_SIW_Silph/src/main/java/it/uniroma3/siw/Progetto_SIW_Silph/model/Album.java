@@ -52,4 +52,6 @@ public class Album {
 	public void setFotografi(List<Fotografo> fotografi) {
 		this.fotografi = fotografi;
 	}
+	
+	//commento di prova, per vedere se il progetto maven è stato finalmente importato correttamente!!!
 }
