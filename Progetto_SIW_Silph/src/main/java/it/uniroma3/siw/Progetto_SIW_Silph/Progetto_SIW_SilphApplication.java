@@ -1,4 +1,4 @@
-package it.uniroma3.siw;
+package it.uniroma3.siw.Progetto_SIW_Silph;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
