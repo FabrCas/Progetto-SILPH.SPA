@@ -1,7 +1,9 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,17 +16,20 @@ public class Fotografia {
 	private Long id;
 	@Column
 	private String nome;
-	@ManyToOne
-	private Fotografo fotografo;
-	@ManyToOne
-	private Album album;
 	@Column
 	private String descrizione;
 	@Column 
 	private String URLfoto;
+	//associazioni
 	
+	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,
+			CascadeType.REFRESH})
+	private Fotografo fotografo;
 	
-
+	@ManyToOne(fetch=FetchType.EAGER,cascade= {CascadeType.PERSIST,
+			CascadeType.REFRESH})
+	private Album album;
+	
 	public Fotografia() {
 	}
 	

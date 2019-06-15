@@ -3,8 +3,10 @@ package it.uniroma3.siw.Progetto_SIW_Silph.model;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,9 +21,15 @@ public class Fotografo {
 	private String nome;
 	@Column
 	private String cognome;
-	@ManyToMany
+	//associazioni
+	
+	@ManyToMany(fetch= FetchType.LAZY, cascade= {CascadeType.PERSIST,
+			CascadeType.REFRESH})
 	private List <Album> albums;
-	@OneToMany(mappedBy="fotografo")
+	
+	@OneToMany(mappedBy="fotografo", fetch=FetchType.EAGER,
+			cascade= {CascadeType.PERSIST, CascadeType.REFRESH,
+		CascadeType.REMOVE})
 	private Map <Long,Fotografia> fotografie;
 	
 	public Fotografo() {

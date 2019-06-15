@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,8 +19,6 @@ public class RichiestaFoto{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@ManyToMany()
-	private List<Fotografia> fotografie;
 	@Column
 	private String nomeUtente;
 	@Column
@@ -27,6 +26,11 @@ public class RichiestaFoto{
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	//associazione
+	
+	//nessun evento in cascata utile per questa associazione
+		@ManyToMany(fetch= FetchType.EAGER)
+		private List<Fotografia> fotografie;
 	
 	public RichiestaFoto () {}
 	
