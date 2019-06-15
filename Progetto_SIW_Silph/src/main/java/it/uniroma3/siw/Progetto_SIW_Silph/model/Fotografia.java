@@ -19,7 +19,15 @@ public class Fotografia {
 	private Date data;
 	@Column
 	private String fotografo;
+	@Column 
+	private Album album;
+	@Column
+	private String descrizione;
+	@Column 
+	private String URLfoto;
 	
+	
+
 	public Fotografia() {
 	}
 	
@@ -46,5 +54,28 @@ public class Fotografia {
 	}
 	public void setFotografo(String fotografo) {
 		this.fotografo = fotografo;
+	}
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	
+	public String getURLfoto() {
+		return URLfoto;
+	}
+
+	public void setURLfoto(String uRLfoto) {
+		URLfoto = uRLfoto;
+	}
+	
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
 	}
 }

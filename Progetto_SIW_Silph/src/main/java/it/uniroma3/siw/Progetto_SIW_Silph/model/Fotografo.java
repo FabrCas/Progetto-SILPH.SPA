@@ -24,7 +24,6 @@ public class Fotografo {
 	
 	public Fotografo() {
 	}
-
 	public Long getId() {
 		return id;
 	}
