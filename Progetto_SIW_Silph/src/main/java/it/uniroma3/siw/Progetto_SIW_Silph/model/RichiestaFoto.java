@@ -3,6 +3,7 @@ package it.uniroma3.siw.Progetto_SIW_Silph.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,7 +30,7 @@ public class RichiestaFoto{
 	//associazione
 	
 	//nessun evento in cascata utile per questa associazione
-		@ManyToMany(fetch= FetchType.EAGER)
+		@ManyToMany(fetch= FetchType.EAGER, cascade= {CascadeType.PERSIST})
 		private List<Fotografia> fotografie;
 	
 	public RichiestaFoto () {}
