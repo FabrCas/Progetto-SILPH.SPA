@@ -73,14 +73,6 @@ public class AlbumRepositoryTest {
 	}
 	
 	@Test
-	public void testAlbumPerId() {
-		albumRepository.save(a);
-		//Normalmente l'id verrà generato dal database grazie all'annotazione GeneratedValue
-		a.setId(1L);
-		assertSame(a, albumRepository.findById(1L).get());
-	}
-	
-	@Test
 	public void testRimuoviAlbum() {
 		albumRepository.save(a);
 		albumRepository.save(b);
@@ -120,16 +112,4 @@ public class AlbumRepositoryTest {
 		}
 		
 	}
-	
-	
-	
-
-	
-	
-	
-	
-	
-
-	
-
 }
