@@ -16,7 +16,7 @@ public class FotografoService {
 	private FotografoRepository fotografoRepository;
 	
 	@Transactional
-	public Fotografo Inserisci (Fotografo f) {
+	public Fotografo inserisci (Fotografo f) {
 		//questa classe dipende dal repository
 		return fotografoRepository.save(f);
 	}
@@ -25,7 +25,7 @@ public class FotografoService {
 	public List<Fotografo> tuttiIFotografi () {
 		return (List<Fotografo>) fotografoRepository.findAll();
 	}
-	
+	@Transactional
 	public Fotografo FotografoPerId (Long id) {
 		return this.fotografoRepository.findById(id).get();
 	}

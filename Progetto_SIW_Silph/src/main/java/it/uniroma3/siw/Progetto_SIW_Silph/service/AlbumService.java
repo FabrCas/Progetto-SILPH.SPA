@@ -15,7 +15,7 @@ public class AlbumService {
 	private AlbumRepository albumRepostiory;
 	
 	@Transactional
-	public Album Inserisci (Album a) {
+	public Album inserisci (Album a) {
 		//questa classe dipende dal repository
 		return albumRepostiory.save(a);
 	}
@@ -24,7 +24,7 @@ public class AlbumService {
 	public List<Album> tuttiGliAlbum () {
 		return (List<Album>) albumRepostiory.findAll();
 	}
-	
+	@Transactional
 	public Album AlbumPerId (Long id) {
 		return this.albumRepostiory.findById(id).get();
 	}

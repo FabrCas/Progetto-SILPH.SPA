@@ -16,7 +16,7 @@ public class RichiestaFotoService {
 	private RichiestaFotoRepository richiestaFotoRepository;
 	
 	@Transactional
-	public RichiestaFoto Inserisci (RichiestaFoto r) {
+	public RichiestaFoto inserisci (RichiestaFoto r) {
 		//questa classe dipende dal repository
 		return richiestaFotoRepository.save(r);
 	}
@@ -25,7 +25,7 @@ public class RichiestaFotoService {
 	public List<RichiestaFoto> tutteLeRichiesteFoto () {
 		return (List<RichiestaFoto>) richiestaFotoRepository.findAll();
 	}
-	
+	@Transactional
 	public RichiestaFoto RichiestaFotoPerId (Long id) {
 		return this.richiestaFotoRepository.findById(id).get();
 	}

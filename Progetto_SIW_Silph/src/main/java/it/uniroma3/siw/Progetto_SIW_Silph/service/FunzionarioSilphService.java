@@ -17,7 +17,7 @@ public class FunzionarioSilphService {
 	private FunzionarioSilphRepository funzionarioSilphRepository;
 	
 	@Transactional
-	public FunzionarioSilph Inserisci (FunzionarioSilph fs) {
+	public FunzionarioSilph inserisci (FunzionarioSilph fs) {
 		//questa classe dipende dal repository
 		return funzionarioSilphRepository.save(fs);
 	}
@@ -26,7 +26,7 @@ public class FunzionarioSilphService {
 	public List<FunzionarioSilph> tuttiIFunzionariSilph () {
 		return (List<FunzionarioSilph>) funzionarioSilphRepository.findAll();
 	}
-	
+	@Transactional
 	public FunzionarioSilph FunzionarioSilpgPerId (Long id) {
 		return this.funzionarioSilphRepository.findById(id).get();
 	}
