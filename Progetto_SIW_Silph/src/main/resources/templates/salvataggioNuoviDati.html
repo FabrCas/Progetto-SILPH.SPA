@@ -3,9 +3,20 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Inserimento Dati Silph</title>
 </head>
 <body>
-
+<h4>Che dato vuoi inserire?</h4>
+<div>
+<form action="/operazioniFunzionario" method="post">
+<input type="checkbox" name="operazione" value="album">Salva un nuovo album
+<br>
+<input type="checkbox" name="operazione" value="foto">Salva una nuova fotografia
+<br>
+<input type="checkbox" name="operazione" value="fotografo">Salva un nuovo fotografo
+<br><br>
+<input type="submit" value="invia">
+</form>
+</div>
 </body>
 </html>
