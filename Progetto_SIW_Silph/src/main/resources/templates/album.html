@@ -3,9 +3,30 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Album</title>
 </head>
 <body>
-
+	<h1>Informazioni sull album :</h1>
+	<div>
+		Nome : <span th:text="${album.nome}"></span>
+	</div>
+	<div>
+		<h4>Foto :</h4>
+		<ul>
+			<li th:each="fotografia: ${album.fotografie}">
+			<img src="${fotografia.URLfoto}" alt="${fotografia.descrizione}">
+			</li>
+		</ul>
+		<h4>Fotografi che hanno partecipato :</h4>
+		<ul>
+			<li th:each="fotografo: ${album.fotografi}">
+			<a th:href="@{'/fotografo' + '/' +${fotografo.id}}"
+			th:text="${fotografo.nome}"> paolo</a>
+			</li>
+		</ul>
+	</div>
+	<div>
+	<a href="paginaSito.html">ritorna al sito</a>
+	</div>
 </body>
 </html>
