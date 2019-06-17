@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Richiesta di utilizzo</title>
+</head>
+<body>
+	<h1>Informazioni su richiesta di utilizzo:</h1>
+	<div>
+		Nome Utente: <span th:text="${richiestaFoto.nomeUtente}">qui va
+			il nome utente</span>
+	</div>
+	<div>
+		Descrizione Richiesta: <span th:text="${richiestaFoto.descrizione}">qui va la 
+		descrizione della richiesta</span>
+	</div>
+	<div>
+		<h4>Foto richieste:</h4>
+		<ul>
+			<li th:each="fotografia: ${richiestaFoto.fotografie}">
+			<img src="${fotografia.URLfoto}" alt="${fotografia.descrizione}">
+			</li>
+		</ul>
+	</div>
+	<div>
+	<a href="paginaSito.html">ritorna al sito</a>
+	</div>
+</body>
+</html>

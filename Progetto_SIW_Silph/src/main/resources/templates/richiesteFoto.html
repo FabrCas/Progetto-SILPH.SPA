@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Richieste di utilizzo Fotografie</title>
+</head>
+<body>
+	<div>
+		<h3>Segue la lista di richieste di utilizzo ricevute dagli utenti</h3>
+		<h3>cliccare sulla richiesta per maggiori informazioni</h3>
+		<ul>
+			<li th:each="richiestaFoto : ${richiesteFoto}"><a
+				th:href="@{'/richiestaFoto' + '/' +${richiestaFoto.id}}"
+				th:text="${richiestaFotoStat.index}"> richiesta foto</a></li>
+		</ul>
+	</div>
+</body>
+</html>
