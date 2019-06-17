@@ -70,4 +70,11 @@ public class AlbumController {
 		
 		return "albumForm.html";
 	}
+	
+	
+	//ci manda alla pagina dei creatori
+	@RequestMapping("/roma3")
+	public String roma3(Model model) {
+		return "roma3studenti.html";
+	}
 }

@@ -6,6 +6,26 @@
 <title>form fotografia</title>
 </head>
 <body>
+	<div>
+		<h4>Inserisci i dati di una fotografia</h4>
+	</div>
+	<form th:action="@{/fotografia}" method="POST" th:object="${fotografia}">
+		<p>Nome :</p>
+		<p>
+			<input type="text" th:field="*{nome}" />
+		</p>
+		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		
+		<ul>
+		<li>
+		</ul>
 
+
+		<p>
+			<button type="submit">Invio</button>
+		</p>
+
+
+	</form>
 </body>
 </html>
