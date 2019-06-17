@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>nserimento Fotografie album</title>
+</head>
+<body>
+	<div>
+		<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+	</div>
+	<form th:action="@{/album}" method="POST" th:object="${album}">
+		<ul>
+			<li th:each="fotografo : ${fotografi}"><input type="radio"
+				name="fotografi" value="fotografo.id">${fotografo.nome}
+				${fotografo.cognome}</li>
+		</ul>
+		<p>
+			<button type="submit">Invio</button>
+		</p>
+	</form>
+</body>
+</html>

@@ -63,6 +63,6 @@ public class Album {
 	}
 	
 	public void addFotografia(Fotografia f) {
-		this.getFotografie().add(f);
+		this.getFotografie().add(f); 
 	}
 }

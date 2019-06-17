@@ -9,24 +9,12 @@
 	<div>
 		<h4>Inserisci i dati di un album</h4>
 	</div>
-	<form th:action="@{/album}" method="POST" th:object="${album}">
+	<form th:action="@{/InserimentoFotografieAlbum}" method="POST" th:object="${album}">
 		<p>Nome:</p>
 		<p>
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-		<div>
-			<ul>
-				<li th:each="fotografia : ${fotografie}"><input type="radio"
-					name="fotografie" value="fotografia.id">${fotografia.nome}</li>
-			</ul>
-		</div>
-		<div>
-			<ul>
-				<li th:each="fotografo : ${fotografi}"><input type="radio"
-					name="fotografi" value="fotografo.id">${fotografo.nome} ${fotografo.cognome}</li>
-			</ul>
-		</div>
 		<p>
 			<button type="submit">Invio</button>
 		</p>
