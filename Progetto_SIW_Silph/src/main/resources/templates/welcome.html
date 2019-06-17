@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <title>Reindirizzamento funzionario Silph</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  </head>
+  <body>
+
+  <div class="header">
+    <h2 class="logo">SILPH SPA</h2>
+    <input type="checkbox" id="chk">
+    <label for="chk" class="show-menu-btn">
+      <i class="fas fa-ellipsis-h"></i>
+    </label>
+    </div>
 </head>
+<h4>Bevenuto ,<span th:utext="${username}"></span>! Scegli una delle seguenti operazioni:
+</h4>
 <body>
-<h1>Welcome, <span th:utext="${username}"></span>!</h1>
+<div> <a href="/toSito">Visita il sito</a>
+</div>
+<div> <a href="/inserimentoDati">Inserisci dati Silph.Spa</a>
+</div>
+<div> <a href="/visualizzaRichieste"> Visualizza le richieste di utilizzo da parte degli utenti</a>
+</div>
 
 <h3 th:if="${role} == 'ADMIN'">
     <a href="/admin">Visit the admin page</a>
 </h3>
 
 <h5><a href="/logout">Logout</a></h5>
-
 </body>
 </html>
