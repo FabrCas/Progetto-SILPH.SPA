@@ -97,4 +97,10 @@ public class AlbumController {
 	public String roma3(Model model) {
 		return "roma3studenti.html";
 	}
+	
+	//per altro
+	@RequestMapping("/gallery")
+	public String gallery(Model model) {
+		return "gallery.html";
+	}
 }

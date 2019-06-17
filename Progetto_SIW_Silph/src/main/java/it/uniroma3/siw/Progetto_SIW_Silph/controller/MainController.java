@@ -32,7 +32,7 @@ public class MainController {
      */
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public String index(Model model) {
-        return "/ToSito";		//era home
+        return "home";		//era home
     }
 
     /**

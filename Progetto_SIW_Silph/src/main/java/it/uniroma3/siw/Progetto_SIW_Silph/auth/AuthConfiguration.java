@@ -50,7 +50,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                     // everyone (authenticated or not) can access the home page
-                    .antMatchers(HttpMethod.GET, "/", "/index").permitAll()
+                    .antMatchers(HttpMethod.GET, "/", "/index","/").permitAll()
 
                     // only admin can access the admin page
                     .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
@@ -73,7 +73,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                     // logout is performed when sending a GET to "/logout"
                     .logoutUrl("/logout")
                     // after logout is successful, redirect to / page (home)
-                    .logoutSuccessUrl("/");
+                    .logoutSuccessUrl("/toSito");		//prima era .logoutSuccessUrl("/");	
     }
 
     @Autowired
