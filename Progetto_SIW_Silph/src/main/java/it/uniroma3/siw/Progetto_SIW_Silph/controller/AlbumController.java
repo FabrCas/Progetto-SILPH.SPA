@@ -47,7 +47,6 @@ public class AlbumController {
 			return "albums.html";
 		}
 	}
-
 	
 	//per passare alla form
 	@RequestMapping("/addAlbum")

@@ -6,17 +6,19 @@
 <title>Inserimento Dati Silph</title>
 </head>
 <body>
-<h4>Che dati vuoi Gestire?</h4>
+<h4>Che dati vuoi Inserire?</h4>
 <div>
-<form action="/operazioniFunzionario" method="post">
-
-<input type="radio" name="operazione" value="Album">Gestisci gli album
-<br>
-<input type="radio" name="operazione" value="Fotografia">Gestici le fotografie
-<br>
-<input type="radio" name="operazione" value="Fotografo">Gestisci i fotografi
-<br><br>
-<input type="submit" value="invia">
+Inserimento nuovo album:
+<form action="/addAlbum" method="POST" >
+<button type="submit">Invio</button>
+</form>
+Inserimento nuova fotografia:
+<form action="/addFotografia" method="POST" >
+<button type="submit">Invio</button>
+</form>
+Inserimento nuovo fotografo:
+<form action="/addFotografo" method="POST" >
+<button type="submit">Invio</button>
 </form>
 </div>
 </body>
