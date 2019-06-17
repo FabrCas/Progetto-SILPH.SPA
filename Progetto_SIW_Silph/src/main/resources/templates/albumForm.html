@@ -6,5 +6,26 @@
 <title>form album</title>
 </head>
 <body>
+	<div>
+		<h4>Inserisci i dati di un album</h4>
+	</div>
+	<form th:action="@{/album}" method="POST" th:object="${album}">
+		<p>Nome:</p>
+		<p>
+			<input type="text" th:field="*{nome}" />
+		</p>
+		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		<p>Seleziona Fotografi</p>
+		<ul>
+		<li>
+		</ul>
+
+
+		<p>
+			<button type="submit">Invio</button>
+		</p>
+
+
+	</form>
 </body>
 </html>

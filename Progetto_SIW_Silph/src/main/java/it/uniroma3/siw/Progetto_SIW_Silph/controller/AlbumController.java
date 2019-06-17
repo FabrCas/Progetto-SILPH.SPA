@@ -1,5 +1,7 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
+import java.util.ArrayList;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografo;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.AlbumService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.AlbumValidator;
+import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
+import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografoService;
 
 @Controller
 public class AlbumController {
 
 	@Autowired
 	AlbumService albumService;
+	@Autowired
+	FotografoService fotografoService;
+	@Autowired
+	FotografiaService fotografiaService;
+	
 	@Autowired
 	AlbumValidator albumValidator;
 
@@ -52,6 +63,11 @@ public class AlbumController {
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		model.addAttribute("album", new Album());
+		model.addAttribute("listaFotografi", new ArrayList <Fotografo>());
+		model.addAttribute("listaFotografie", new ArrayList <Fotografia>());
+		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
+		model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
+		
 		return "albumForm.html";
 	}
 }
