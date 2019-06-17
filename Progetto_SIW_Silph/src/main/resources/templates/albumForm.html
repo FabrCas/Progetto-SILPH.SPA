@@ -15,17 +15,21 @@
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-		<p>Seleziona Fotografi</p>
-		<ul>
-		<li>
-		</ul>
-
-
+		<div>
+			<ul>
+				<li th:each="fotografia : ${fotografie}"><input type="radio"
+					name="fotografie" value="fotografia.id">${fotografia.nome}</li>
+			</ul>
+		</div>
+		<div>
+			<ul>
+				<li th:each="fotografo : ${fotografi}"><input type="radio"
+					name="fotografi" value="fotografo.id">${fotografo.nome} ${fotografo.cognome}</li>
+			</ul>
+		</div>
 		<p>
 			<button type="submit">Invio</button>
 		</p>
-
-
 	</form>
 </body>
 </html>

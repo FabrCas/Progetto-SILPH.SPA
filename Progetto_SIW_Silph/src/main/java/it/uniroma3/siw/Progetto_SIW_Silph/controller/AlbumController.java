@@ -1,6 +1,5 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
-import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
@@ -36,15 +36,23 @@ public class AlbumController {
 
 	@RequestMapping(value = "/album", method = RequestMethod.POST)
 	public String newAlbum(@Valid @ModelAttribute("album") Album album,
-			Model model, BindingResult bindingResult) {
-		
+			Model model, BindingResult bindingResult, @RequestParam("fotografie") Long[] fotografieSelezionate,
+			@RequestParam("fotografi") Long[] fotografiSelezionati ){
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {
+			for(Long Idfoto:fotografieSelezionate) {
+				Fotografia fotografia= fotografiaService.FotografiaPerId(Idfoto);
+				album.addFotografia(fotografia);
+			}
+			for(Long Idfotografo:fotografiSelezionati) {
+				Fotografo fotografo= fotografoService.FotografoPerId(Idfotografo);
+				album.addFotografo(fotografo);
+			}
 			this.albumService.inserisci(album);
 			model.addAttribute("albums", this.albumService.tuttiGliAlbum());
-			return "album.html";
-		}else {
 			return "albums.html";
+		}else {
+			return "albumForm.html";
 		}
 	}
 	
@@ -63,11 +71,8 @@ public class AlbumController {
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		model.addAttribute("album", new Album());
-		model.addAttribute("listaFotografi", new ArrayList <Fotografo>());
-		model.addAttribute("listaFotografie", new ArrayList <Fotografia>());
 		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
 		model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
-		
 		return "albumForm.html";
 	}
 }

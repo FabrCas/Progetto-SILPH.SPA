@@ -58,5 +58,11 @@ public class Album {
 		this.fotografi = fotografi;
 	}
 	
-	//commento di prova, per vedere se il progetto maven è stato finalmente importato correttamente!!!
+	public void addFotografo(Fotografo f) {
+		this.getFotografi().add(f);
+	}
+	
+	public void addFotografia(Fotografia f) {
+		this.getFotografie().add(f);
+	}
 }

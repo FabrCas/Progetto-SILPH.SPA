@@ -8,6 +8,7 @@ import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 
 @Controller
 public class FotografiaController {
+	
 	@RequestMapping("/addFotografia")
 	public String addFotografia(Model model) {
 		model.addAttribute("fotografia", new Fotografia());
