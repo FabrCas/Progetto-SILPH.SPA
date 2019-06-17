@@ -30,7 +30,7 @@ public class FunzionarioSilphController {
 	//funzionario
 	@RequestMapping(value="/operazioniFunzionario", method=RequestMethod.POST)
 	public String operazioneGiusta(@RequestParam("operazione") String operazioneValore) {
-		return "/new"+operazioneValore;
+		return "gestione"+operazioneValore+".html";
 		
 	}
 	

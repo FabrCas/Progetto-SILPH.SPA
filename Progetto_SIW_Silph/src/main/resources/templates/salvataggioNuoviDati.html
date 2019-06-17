@@ -6,14 +6,15 @@
 <title>Inserimento Dati Silph</title>
 </head>
 <body>
-<h4>Che dato vuoi inserire?</h4>
+<h4>Che dati vuoi Gestire?</h4>
 <div>
 <form action="/operazioniFunzionario" method="post">
-<input type="checkbox" name="operazione" value="album">Salva un nuovo album
+
+<input type="radio" name="operazione" value="Album">Gestisci gli album
 <br>
-<input type="checkbox" name="operazione" value="foto">Salva una nuova fotografia
+<input type="radio" name="operazione" value="Fotografia">Gestici le fotografie
 <br>
-<input type="checkbox" name="operazione" value="fotografo">Salva un nuovo fotografo
+<input type="radio" name="operazione" value="Fotografo">Gestisci i fotografi
 <br><br>
 <input type="submit" value="invia">
 </form>
