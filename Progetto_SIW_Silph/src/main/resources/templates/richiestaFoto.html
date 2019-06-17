@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="ISO-8859-1">
-<title>Richiesta di utilizzo</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title>Richiesta Di utilizzo</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  </head>
+  <body>
+
+  <div class="header">
+    <h2 class="logo">SILPH SPA</h2>
+    <input type="checkbox" id="chk">
+    <label for="chk" class="show-menu-btn">
+      <i class="fas fa-ellipsis-h"></i>
+    </label>
+    </div>
 	<h1>Informazioni su richiesta di utilizzo:</h1>
 	<div>
 		Nome Utente: <span th:text="${richiestaFoto.nomeUtente}">qui va
@@ -28,3 +39,4 @@
 	</div>
 </body>
 </html>
+

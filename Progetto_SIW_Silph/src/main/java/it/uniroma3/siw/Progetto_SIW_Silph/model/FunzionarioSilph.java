@@ -11,16 +11,53 @@ import javax.persistence.Id;
 public class FunzionarioSilph {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", columnDefinition = "serial", nullable = false)
+	protected Long id;
 	@Column
-	private String nome;
+	protected String nome;
 	@Column
+	protected String cognome;
+	@Column(unique=true)
 	private String username;
 	@Column
-	private String password;
+	protected String password;
 	
+	@Column(name = "role")
+    protected String role;
+	
+	
+	
+	
+	public FunzionarioSilph(Long id, String nome,String cognome, String username, String password, String role) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
 	public FunzionarioSilph() {}
+	 
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	
 	
 	public Long getId() {
 		return id;
