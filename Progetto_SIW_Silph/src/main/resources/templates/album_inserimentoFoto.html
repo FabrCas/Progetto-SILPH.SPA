@@ -19,7 +19,7 @@
 	<div>
 		<h4>Seleziona le foto caricate sul sito:</h4>
 	</div>
-	<form th:action="@{/InserimentoFotografiAlbum}" method="POST"
+	<form th:action="@{/InserimentoFotografiAlbum}" method="GET"
 		th:object="${album}">
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="radio"

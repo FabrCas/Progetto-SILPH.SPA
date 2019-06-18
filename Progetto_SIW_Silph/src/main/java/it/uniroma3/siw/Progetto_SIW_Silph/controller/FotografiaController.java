@@ -31,7 +31,7 @@ public class FotografiaController {
 	//Inserimento fotografia, dalla form, con collezioni.
 	
 	
-	@RequestMapping(value = "/fotografia/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "fotografia/{id}", method = RequestMethod.GET)
 	public String getAlbum(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("fotografia", this.fotografiaService.FotografiaPerId(id));

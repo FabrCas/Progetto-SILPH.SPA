@@ -20,7 +20,7 @@
 	<div class="content">
 		<h4>Inserisci i dati di un album</h4>
 	</div>
-	<form th:action="@{/InserimentoFotografieAlbum}" method="POST" th:object="${album}">
+	<form th:action="@{/InserimentoFotografieAlbum}" method="GET" th:object="${album}">
 		<p>Nome:</p>
 		<p>
 			<input type="text" th:field="*{nome}" />

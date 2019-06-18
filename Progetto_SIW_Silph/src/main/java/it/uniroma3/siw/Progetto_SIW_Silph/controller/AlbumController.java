@@ -36,7 +36,7 @@ public class AlbumController {
 	@Autowired
 	AlbumValidator albumValidator;
 
-	@RequestMapping(value="/InserimentoFotografieAlbum", method= RequestMethod.POST )
+	@RequestMapping(value="/admin/InserimentoFotografieAlbum", method= RequestMethod.GET )
 	public String selezioneFotografie(@Valid @ModelAttribute("album") Album album,
 			Model model, BindingResult bindingResult){
 		this.albumValidator.validate(album, bindingResult);
@@ -50,7 +50,7 @@ public class AlbumController {
 		}
 	}
 	
-	@RequestMapping(value="/InserimentoFotografiAlbum", method=RequestMethod.POST)
+	@RequestMapping(value="InserimentoFotografiAlbum", method=RequestMethod.GET)
 	public String selezioneFotografi(@Valid @ModelAttribute("album") Album album,
 			Model model,@Valid @RequestParam("fotografie") Long[] fotografieSelezionate) {
 		for(Long Idfoto:fotografieSelezionate) {
