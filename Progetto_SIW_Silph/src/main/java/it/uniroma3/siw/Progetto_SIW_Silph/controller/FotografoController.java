@@ -1,12 +1,19 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografo;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.AlbumService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
@@ -28,9 +35,33 @@ public class FotografoController {
 	@Autowired
 	private FotografiaService fotografiaService;
 	
-	
-	//TODO
-	//Inserimento fotografo, dalla form, con collezioni.
+	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
+	public String selezioneFotografie(@RequestParam (required=false, name="albumsScelti")Long[] valoriAlbums,
+			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie,
+			@Valid @ModelAttribute("fotografo") Fotografo fotografo,
+			Model model, BindingResult bindingResult){
+		this.fotografoValidator.validate(fotografo, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			if(valoriAlbums!=null) {
+			for(Long idAlbum:valoriAlbums ) {
+				Album albumFotografo= this.albumService.AlbumPerId(idAlbum);
+				fotografo.addAlbum(albumFotografo);
+			}
+			}
+			if (valoriFotografie!=null){
+			for(Long idFotografia:valoriFotografie) {
+				Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
+				fotografo.addFotografia(fotografiaAlbum);
+			}
+			}
+			this.fotografoService.inserisci(fotografo);
+			model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
+			return "fotografi.html";
+		}
+		else {
+			return "fotografoForm.html";
+		}
+	}
 	
 	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
 	public String getAlbum(@PathVariable ("id") Long id, Model model) {
@@ -46,6 +77,8 @@ public class FotografoController {
 	@RequestMapping("/admin/addFotografo")
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
+		model.addAttribute("albums", this.albumService.tuttiGliAlbum());
+		model.addAttribute("fotografie", this.fotografiaService.tutteLeFotografie());
 		return "fotografoForm.html";
 	}
 

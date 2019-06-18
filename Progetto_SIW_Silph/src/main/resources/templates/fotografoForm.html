@@ -18,28 +18,44 @@
 	
 <div class="content">
 <h4>Inserisci i dati di un fotografo</h4>
-	
+	</div>
 	<form th:action="@{/fotografo}" method="POST" th:object="${fotografo}">
 		<p>Nome :</p>
 		<p>
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		<p>Cognome :</p>
+		<p>
+			<input type="text" th:field="*{cognome}" />
+		</p>
+		<p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
 		
+	<div>
+		<h4>Seleziona le fotografie del fotografo :</h4>
 		<ul>
-		<li>
+			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
+				name="fotografieScelte" value="fotografia.id"> <span
+					th:text="${fotografia.nome}"> nome fotografia</span>
+				</li>
 		</ul>
-
-
+		</div>
+		<br>
+		<br>
+		<div>
+		<h4>Seleziona gli album del fotografo:</h4>
+	</div>
+	
+		<ul>
+			<li th:each="album : ${albums}"><input type="checkbox"
+				name="albumsScelti" value="album.id"> <span
+					th:text="${album.nome}"> nome album</span></li>
+		</ul>
 		<p>
 			<button type="submit">Invio</button>
 		</p>
-
-
 	</form>
-	</div>
 </body>
-</html>
-
+</html>	
 
 

@@ -10,13 +10,13 @@
 	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 <body>
-<div class="header">
+	<div class="header">
 		<h2 class="logo">SILPH SPA</h2>
 		<input type="checkbox" id="chk"> <label for="chk"
 			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
 		</label>
 	</div>
-	
+
 	<div class="content">
 		<h4>Inserisci i dati di un album</h4>
 	</div>
@@ -26,24 +26,25 @@
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-		
+
 		<div>
-		<h4>Seleziona i fotografi conosciuti dal sito:</h4>
-		<ul>
-			<li th:each="fotografo : ${fotografi}"><input type="checkbox"
-				name="fotografiScelti" value="fotografo.id">${fotografo.nome}
-				${fotografo.cognome}</li>
-		</ul>
+			<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+			<ul>
+				<li th:each="fotografo : ${fotografi}"><input type="checkbox"
+					name="fotografiScelti" value="fotografo.id"> <span
+					th:text="${fotografo.nome}"> nome fotografo</span> <span
+					th:text="${fotografo.cognome}"> cognome fotografo</span></li>
+			</ul>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 		<div>
-		<h4>Seleziona le foto caricate sul sito:</h4>
-	</div>
-	
+			<h4>Seleziona le foto caricate sul sito:</h4>
+		</div>
+
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
-				name="fotografieScelte" value="fotografia.id">${fotografia.nome}</li>
+				name="fotografieScelte" value="fotografia.id"> <span
+				th:text="${fotografia.nome}"> nome fotograia</span></li>
 		</ul>
 		<p>
 			<button type="submit">Invio</button>

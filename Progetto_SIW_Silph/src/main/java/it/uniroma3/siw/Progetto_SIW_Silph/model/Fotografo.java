@@ -63,4 +63,12 @@ public class Fotografo {
 	public void setFotografie(List<Fotografia> fotografie) {
 		this.fotografie = fotografie;
 	}
+
+	public void addAlbum(Album a) {
+		this.getAlbums().add(a);
+	}
+
+	public void addFotografia(Fotografia a) {
+		this.getFotografie().add(a);
+	}
 }
