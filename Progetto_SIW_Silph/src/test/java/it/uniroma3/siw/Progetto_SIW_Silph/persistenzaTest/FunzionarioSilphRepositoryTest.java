@@ -12,29 +12,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import it.uniroma3.siw.Progetto_SIW_Silph.model.FunzionarioSilph;
-import it.uniroma3.siw.Progetto_SIW_Silph.repository.FunzionarioSilphRepository;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Utente;
+import it.uniroma3.siw.Progetto_SIW_Silph.repository.UtenteRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class FunzionarioSilphRepositoryTest {
-		private FunzionarioSilph fs1;
-		private FunzionarioSilph fs2;
-		private FunzionarioSilph fs3;
-		private FunzionarioSilph fs4;
+		private Utente fs1;
+		private Utente fs2;
+		private Utente fs3;
+		private Utente fs4;
 
 		@Autowired
-		FunzionarioSilphRepository funzionarioSilphRepository;
+		UtenteRepository funzionarioSilphRepository;
 
 
 		@Before
 		public void setUp() throws Exception {
 			//attenzione, add & delete vengono gestite nel repository grazie all'id
 			//si basti ricordare che noi estendiamo la classe CrudRepository<classe,id>
-			fs1= new FunzionarioSilph();
-			fs2= new FunzionarioSilph();
-			fs3= new FunzionarioSilph();
-			fs4= new FunzionarioSilph();
+			fs1= new Utente();
+			fs2= new Utente();
+			fs3= new Utente();
+			fs4= new Utente();
 			fs1.setNome("Amarino");
 			fs2.setNome("Emilio");
 			fs3.setNome("Andrea");
@@ -44,13 +44,13 @@ public class FunzionarioSilphRepositoryTest {
 		@Test
 		public void testUnFunzioanarioAggiunto() {
 			funzionarioSilphRepository.save(fs1);
-			assertEquals(1,((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).size());
-			assertSame(fs1,((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).get(0));
+			assertEquals(1,((List<Utente>)funzionarioSilphRepository.findAll()).size());
+			assertSame(fs1,((List<Utente>)funzionarioSilphRepository.findAll()).get(0));
 		}
 
 		@Test
 		public void testNessunFunzionarioAggunto() {
-			assertEquals(0,((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).size());
+			assertEquals(0,((List<Utente>)funzionarioSilphRepository.findAll()).size());
 		}
 
 		@Test
@@ -58,7 +58,7 @@ public class FunzionarioSilphRepositoryTest {
 			funzionarioSilphRepository.save(fs1);
 			funzionarioSilphRepository.save(fs2);
 			funzionarioSilphRepository.save(fs3);
-			assertEquals(3,((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).size());
+			assertEquals(3,((List<Utente>)funzionarioSilphRepository.findAll()).size());
 		}
 
 		@Test
@@ -66,8 +66,8 @@ public class FunzionarioSilphRepositoryTest {
 			funzionarioSilphRepository.save(fs1);
 			funzionarioSilphRepository.save(fs2);
 			funzionarioSilphRepository.delete(fs1);
-			assertEquals(1,((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).size());
-			assertSame(fs2, ((List<FunzionarioSilph>)funzionarioSilphRepository.findAll()).get(0));
+			assertEquals(1,((List<Utente>)funzionarioSilphRepository.findAll()).size());
+			assertSame(fs2, ((List<Utente>)funzionarioSilphRepository.findAll()).get(0));
 		}
 
 		//test della firma definita nella Repository
@@ -78,11 +78,11 @@ public class FunzionarioSilphRepositoryTest {
 			funzionarioSilphRepository.save(fs2);
 			funzionarioSilphRepository.save(fs3);
 			funzionarioSilphRepository.save(fs4);
-			List<FunzionarioSilph> lista= new ArrayList<FunzionarioSilph>();
+			List<Utente> lista= new ArrayList<Utente>();
 			lista.add(fs2);
 			lista.add(fs4);
 			int i=0;
-			for(FunzionarioSilph al: lista) {
+			for(Utente al: lista) {
 				assertSame(al, funzionarioSilphRepository.findByNome("Emilio").get(i));
 				i++;
 			}

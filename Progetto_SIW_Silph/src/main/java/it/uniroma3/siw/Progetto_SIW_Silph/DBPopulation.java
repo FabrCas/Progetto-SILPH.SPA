@@ -8,14 +8,14 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import it.uniroma3.siw.Progetto_SIW_Silph.model.FunzionarioSilph;
-import it.uniroma3.siw.Progetto_SIW_Silph.repository.FunzionarioSilphRepository;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Utente;
+import it.uniroma3.siw.Progetto_SIW_Silph.repository.UtenteRepository;
 
 @Component
 public class DBPopulation implements ApplicationRunner {
 
     @Autowired
-    private FunzionarioSilphRepository FunzionarioRepository;
+    private UtenteRepository FunzionarioRepository;
 
 
     public void run(ApplicationArguments args) throws Exception {
@@ -33,7 +33,7 @@ public class DBPopulation implements ApplicationRunner {
 
         System.out.println("Storing users...");
 
-        FunzionarioSilph admin = new FunzionarioSilph(1L, "Mario", "Rossi", "mariorossi", null, "ADMIN");
+        Utente admin = new Utente(1L, "Mario", "Rossi", "mariorossi", null, "ADMIN");
         String adminPassword = new BCryptPasswordEncoder().encode("mrpass");
         admin.setPassword(adminPassword);
         admin = this.FunzionarioRepository.save(admin);

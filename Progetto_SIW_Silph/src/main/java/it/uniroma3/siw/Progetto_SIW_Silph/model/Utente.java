@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class FunzionarioSilph {
+public class Utente {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -26,7 +26,7 @@ public class FunzionarioSilph {
 	@Column(name = "role")
     protected String role;
 	
-	public FunzionarioSilph(Long id, String nome,String cognome, String username, String password, String role) {
+	public Utente(Long id, String nome,String cognome, String username, String password, String role) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -36,7 +36,7 @@ public class FunzionarioSilph {
 		this.role = role;
 	}
 
-	public FunzionarioSilph() {}
+	public Utente() {}
 	 
 	public String getCognome() {
 		return cognome;
