@@ -3,7 +3,7 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>form album</title>
+<title>ALbum FOrm</title>
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -16,7 +16,8 @@
 			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
 		</label>
 	</div>
-	<div>
+	
+	<div class="content">
 		<h4>Inserisci i dati di un album</h4>
 	</div>
 	<form th:action="@{/InserimentoFotografieAlbum}" method="POST" th:object="${album}">
