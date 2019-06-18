@@ -26,9 +26,6 @@ public class FunzionarioSilph {
 	@Column(name = "role")
     protected String role;
 	
-	
-	
-	
 	public FunzionarioSilph(Long id, String nome,String cognome, String username, String password, String role) {
 		super();
 		this.id = id;
@@ -57,8 +54,6 @@ public class FunzionarioSilph {
 		this.role = role;
 	}
 
-	
-	
 	public Long getId() {
 		return id;
 	}
