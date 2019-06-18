@@ -62,7 +62,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                     
                     // all authenticated users can access all the other pages (that is, welcome) //
                    //.anyRequest().authenticated()
-
+.anyRequest().permitAll()
                 // login paragraph: we are going to define here how to login
                 // use formlogin protocol to perform login
                 .and().formLogin()

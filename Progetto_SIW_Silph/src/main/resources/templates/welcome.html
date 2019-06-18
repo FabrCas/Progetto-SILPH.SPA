@@ -16,23 +16,39 @@
     <label for="chk" class="show-menu-btn">
       <i class="fas fa-ellipsis-h"></i>
     </label>
-    </div>
-</head>
+    </div>    
+    
+    <ul class="menu">
+      <a href="/toSito">Home</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/welcome">Services</a>
+   
+      <a href="/logout">Logout</a>     
+      <a href="/roma3">Contact</a>
+      <label for="chk" class="hide-menu-btn">
+        <i class="fas fa-times"></i>
+      </label>
+    </ul>
+
+
+<div class="content">
 <h4>Bevenuto ,<span th:utext="${username}"></span>! Scegli una delle seguenti operazioni:
 </h4>
-<body>
 
-<div> <a href="/toSito">Visita il sito</a>
-</div>
+
+ 
+
 <div> <a href="/inserimentoDati">Inserisci dati Silph.Spa</a>
 </div>
 <div> <a href="/visualizzaRichieste"> Visualizza le richieste di utilizzo da parte degli utenti</a>
 </div>
-
+<!-- 
 <h3 th:if="${role} == 'ADMIN'">
     <a href="/admin">Visit the admin page</a>
 </h3>
-
+ -->
 <h5><a href="/logout">Logout</a></h5>
+
+</div>
 </body>
 </html>
