@@ -3,9 +3,40 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>form fotografo</title>
+<title>Form Fotografia</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 <body>
 
+	<div class="header">
+		<h2 class="logo">SILPH SPA</h2>
+		<input type="checkbox" id="chk"> <label for="chk"
+			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
+		</label>
+	</div>
+	<div>
+		<h4>Inserisci i dati di un fotografo</h4>
+	</div>
+	<form th:action="@{/fotografo}" method="POST" th:object="${fotografo}">
+		<p>Nome :</p>
+		<p>
+			<input type="text" th:field="*{nome}" />
+		</p>
+		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		
+		<ul>
+		<li>
+		</ul>
+
+
+		<p>
+			<button type="submit">Invio</button>
+		</p>
+
+
+	</form>
 </body>
 </html>
