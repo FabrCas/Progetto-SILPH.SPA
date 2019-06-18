@@ -37,13 +37,17 @@ public class AlbumController {
 			Model model, BindingResult bindingResult){
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {
+			if(valoriFotografi!=null) {
 			for(Long idFotografo:valoriFotografi ) {
 				Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
 				album.addFotografo(fotografoAlbum);
 			}
+			}
+			if (valoriFotografie!=null){
 			for(Long idFotografia:valoriFotografie) {
 				Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
 				album.addFotografia(fotografiaAlbum);
+			}
 			}
 			this.albumService.inserisci(album);
 			model.addAttribute("albums", albumService.tuttiGliAlbum());
