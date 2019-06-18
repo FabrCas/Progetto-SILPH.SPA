@@ -50,14 +50,18 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                     // everyone (authenticated or not) can access the home page
-                    .antMatchers(HttpMethod.GET, "/", "/index","/").permitAll()
+                    .antMatchers(HttpMethod.GET, "/", "/index","/toSito").permitAll()
 
                     // only admin can access the admin page
-                    .antMatchers(HttpMethod.GET, "/admin","/attivitaFunzionario","inserimentoDati","/addAlbum").hasAnyAuthority("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
+                    
+                    .antMatchers(HttpMethod.GET, "/inserimentoDati").hasAnyAuthority("ADMIN")
+                    
+                    .antMatchers(HttpMethod.POST, "/addAlbum").hasAnyAuthority("ADMIN")
 
-                    .antMatchers(HttpMethod.POST, "/admin","/attivitaFunzionario","inserimentoDati","/addAlbum").hasAnyAuthority("ADMIN")
+                    
                     // all authenticated users can access all the other pages (that is, welcome)
-                  // .anyRequest().authenticated()
+                   //.anyRequest().authenticated()
 
                 // login paragraph: we are going to define here how to login
                 // use formlogin protocol to perform login
