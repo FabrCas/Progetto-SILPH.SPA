@@ -26,11 +26,32 @@
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		<p>Descrizione :</p>
+		<p>
+			<input type="text" th:field="*{descrizione}" />
+		</p>
 		
-		<ul>
-		<li>
-		</ul>
-
+		<p>Indirizzo foto (URL) :</p>
+		<p>
+			<input type="text" th:field="*{URLfoto}" />
+		</p>
+		<p th:if="${#fields.hasErrors('URLfoto')}" th:errors="*{URLfoto}"></p>
+		
+		<h4>Seleziona il fotografo autore della foto:</h4>
+			<ul>
+				<li th:each="fotografo : ${fotografi}"><input type="radio"
+					name="fotografoScelto" value="fotografo.id"> <span
+					th:text="${fotografo.nome}"> nome fotografo</span> <span
+					th:text="${fotografo.cognome}"> cognome fotografo</span></li>
+			</ul>
+			<br> <br>
+			<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+			<ul>
+				<li th:each="album : ${albums}"><input type="radio"
+					name="albumScelto" value="album.id"> <span
+					th:text="${album.nome}"> nome fotografo</span> <span
+					th:text="${album.cognome}"> cognome fotografo</span></li>
+			</ul>
 
 		<p>
 			<button type="submit">Invio</button>

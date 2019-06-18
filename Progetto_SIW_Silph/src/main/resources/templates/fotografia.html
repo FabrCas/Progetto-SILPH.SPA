@@ -31,13 +31,13 @@
 			alt="${fotografia.descrizione}">
 	</div>
 	<div>
-		Fotografo : <span th:text="${fotografia.fotografo}"></span>
+		Fotografo : <a th:object="${fotografia} "th:href="@{'/fotografo' + '/' +*{fotografo.id}}" th:text="${fotografo.nome}"> fotografo</a>
 	</div>
 	<div>
-		Album : <span th:text="${fotografia.album}"></span>
+		Album : <a th:object="${fotografia}" th:href="@{'/album' + '/' +${album.id}}" th:text="${album.nome}"> paolo</a>
 	</div>
 	<div>
-		<a href="paginaSito.html">ritorna al sito</a>
+		<a href="/toSito">ritorna al sito</a>
 	</div>
 </body>
 </html>
