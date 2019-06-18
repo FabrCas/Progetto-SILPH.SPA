@@ -1,22 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-<head>
-<meta charset="ISO-8859-1">
-<title>Album</title>
-<link rel="stylesheet" href="style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-</head>
-<body>
-	<div class="header">
-		<h2 class="logo">SILPH SPA</h2>
-		<input type="checkbox" id="chk"> <label for="chk"
-			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
-		</label>
-	</div>
-	<h1>Informazioni sull album :</h1>
+  <head>
+    <meta charset="utf-8">
+    <title>Album</title>
+    
+  
+  </head>
+  <body>
+
+<div >
+
+
+
+	<h1><FONT COLOR=blue FACE="Comic Sans MS">Informazioni sull' album:</FONT><br></h1>
 	<h4>
 		Nome : <span th:text="${album.nome}"></span>
 	</h4>
@@ -37,6 +34,8 @@
 	</div>
 	<div>
 	<a href="/toSito">ritorna al sito</a>
+	</div>
+	
 	</div>
 </body>
 </html>
