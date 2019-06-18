@@ -1,9 +1,6 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.auth;
 
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,18 +47,19 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                     // everyone (authenticated or not) can access the home page
-                    .antMatchers(HttpMethod.GET, "/", "/index","/toSito").permitAll()
+                    .antMatchers(HttpMethod.GET, "/", "/index","/toSito","/addAlbum").permitAll()
+                    
 
                     // only admin can access the admin page
-                    .antMatchers(HttpMethod.GET, "/admin","/attivitaFunzionario","/inserimentoDati","/addAlbum").hasAnyAuthority("ADMIN")
                     .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
                     
                     .antMatchers(HttpMethod.GET, "/inserimentoDati").hasAnyAuthority("ADMIN")
                     
+                   
                     .antMatchers(HttpMethod.POST, "/addAlbum").hasAnyAuthority("ADMIN")
 
                     
-                    // all authenticated users can access all the other pages (that is, welcome)
+                    // all authenticated users can access all the other pages (that is, welcome) //
                    //.anyRequest().authenticated()
 
                 // login paragraph: we are going to define here how to login
