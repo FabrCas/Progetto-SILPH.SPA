@@ -65,16 +65,19 @@ public class MainController {
         return "admin";
     }
     
-    //inserito dopo
-    @RequestMapping(value="/addAlbum",method = RequestMethod.POST)
-	public String addAlbum(Model model) {
-		model.addAttribute("album", new Album());
-		 UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
-	        model.addAttribute("username", details.getUsername());
-	        model.addAttribute("role", role);
-		return "albumForm.html";
-	}
+    @RequestMapping("/inserimentoDati")
+    public String inserimentoDati(Model model) {
+        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
+        model.addAttribute("username", details.getUsername());
+        model.addAttribute("role", role);
+
+        return "salvataggioNuoviDati.html";
+    }
+    
+
+    
+    
     
     
 	//ci manda alla pagina dei creatori
