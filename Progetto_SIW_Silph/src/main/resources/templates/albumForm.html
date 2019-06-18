@@ -20,12 +20,35 @@
 	<div class="content">
 		<h4>Inserisci i dati di un album</h4>
 	</div>
+<<<<<<< HEAD
 	<form th:action="@{/InserimentoFotografieAlbum}" method="GET" th:object="${album}">
+=======
+	<form th:action="@{/album}" method="GET" th:object="${album}">
+>>>>>>> branch 'master' of https://github.com/FabrCas/Progetto-SILPH.SPA.git
 		<p>Nome:</p>
 		<p>
 			<input type="text" th:field="*{nome}" />
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		
+		<div>
+		<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+		<ul>
+			<li th:each="fotografo : ${fotografi}"><input type="checkbox"
+				name="fotografiScelti" value="fotografo.id">${fotografo.nome}
+				${fotografo.cognome}</li>
+		</ul>
+		</div>
+		
+		<div>
+		<h4>Seleziona le foto caricate sul sito:</h4>
+	</div>
+	
+		<ul>
+			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
+				name="fotografieScelte" value="fotografia.id">${fotografia.nome}</li>
+		</ul>
+		
 		<p>
 			<button type="submit">Invio</button>
 		</p>
