@@ -87,9 +87,12 @@ public class AlbumController {
 	}
 	
 	//per passare alla form
-	@RequestMapping(value="/addAlbum",method = RequestMethod.POST)
+	
+	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		model.addAttribute("album", new Album());
+		
+		//aggiunti
 		 UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
 	        model.addAttribute("username", details.getUsername());

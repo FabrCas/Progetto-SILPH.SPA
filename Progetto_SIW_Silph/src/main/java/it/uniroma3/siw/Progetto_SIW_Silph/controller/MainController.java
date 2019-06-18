@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
+
 
 
 /**
@@ -62,6 +64,17 @@ public class MainController {
 
         return "admin";
     }
+    
+    //inserito dopo
+    @RequestMapping(value="/addAlbum",method = RequestMethod.POST)
+	public String addAlbum(Model model) {
+		model.addAttribute("album", new Album());
+		 UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
+	        model.addAttribute("username", details.getUsername());
+	        model.addAttribute("role", role);
+		return "albumForm.html";
+	}
     
     
 	//ci manda alla pagina dei creatori
