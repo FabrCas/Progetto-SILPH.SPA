@@ -4,6 +4,8 @@ package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -85,9 +87,16 @@ public class AlbumController {
 	}
 	
 	//per passare alla form
+	
 	@RequestMapping("/addAlbum")
 	public String addAlbum(Model model) {
 		model.addAttribute("album", new Album());
+		
+		//aggiunti
+		 UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
+	        model.addAttribute("username", details.getUsername());
+	        model.addAttribute("role", role);
 		return "albumForm.html";
 	}
 	

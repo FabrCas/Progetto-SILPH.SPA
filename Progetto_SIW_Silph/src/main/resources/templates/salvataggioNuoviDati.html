@@ -17,11 +17,16 @@
 			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
 		</label>
 	</div>
+	<!-- questo sotto serve per vedere se si è amministratori in quel momento -->
+	<h3 th:if="${role} == 'ADMIN'">
+    <a href="/admin">Visit the admin page</a>
+</h3>
+	
 <body>
 	<h4>Che dati vuoi Inserire?</h4>
 	<div>
 		Inserimento nuovo album:
-		<form action="/addAlbum" method="POST">
+		<form  action="/addAlbum" method="POST">
 			<button type="submit">Invio</button>
 		</form>
 		Inserimento nuova fotografia:
