@@ -43,7 +43,7 @@ public class FotografoController {
 		}
 	}
 	
-	@RequestMapping("/addFotografo")
+	@RequestMapping("/admin/addFotografo")
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
 		return "fotografoForm.html";

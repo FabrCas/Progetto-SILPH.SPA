@@ -89,7 +89,7 @@ public class AlbumController {
 
 	
 	//mmodificato 
-    @RequestMapping(value ="/admin/addAlbum", method = RequestMethod.POST)
+    @RequestMapping(value ="/admin/addAlbum", method = RequestMethod.GET)
     public String inserimentoDatiadmin(Model model) {
     	model.addAttribute("album",new Album());
         
