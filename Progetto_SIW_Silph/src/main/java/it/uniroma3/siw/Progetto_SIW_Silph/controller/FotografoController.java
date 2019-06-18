@@ -36,7 +36,7 @@ public class FotografoController {
 	private FotografiaService fotografiaService;
 	
 	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
-	public String selezioneFotografie(@RequestParam (required=false, name="albumsScelti")Long[] valoriAlbums,
+	public String newFotografo(@RequestParam (required=false, name="albumsScelti")Long[] valoriAlbums,
 			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie,
 			@Valid @ModelAttribute("fotografo") Fotografo fotografo,
 			Model model, BindingResult bindingResult){
@@ -64,7 +64,7 @@ public class FotografoController {
 	}
 	
 	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
-	public String getAlbum(@PathVariable ("id") Long id, Model model) {
+	public String getFotografo(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
 			model.addAttribute("fotografo", this.fotografoService.FotografoPerId(id));
 			return "fotografo.html";
@@ -74,7 +74,7 @@ public class FotografoController {
 		}
 	}
 	
-	@RequestMapping("/admin/addFotografo")
+	@RequestMapping(value="/admin/addFotografo", method = RequestMethod.GET)
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
 		model.addAttribute("albums", this.albumService.tuttiGliAlbum());

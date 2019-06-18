@@ -22,7 +22,7 @@
 	<h3>cliccare sul fotografo per maggiori informazioni</h3>
 	<ul>
 		<li th:each="fotografo : ${fotografi}"><a
-			th:href="@{'/fotografo' + '/' +${fotografo.id}}" th:text="${fotografo.nome} ${fotografo.cognome}">
+			th:href="@{'/fotografo' + '/' +${fotografo.id}}" th:text="${fotografo.nome}+${fotografo.cognome}">
 				fotografo</a></li>
 	</ul>
 	</div>

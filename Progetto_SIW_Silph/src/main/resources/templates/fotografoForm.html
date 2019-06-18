@@ -19,7 +19,7 @@
 <div class="content">
 <h4>Inserisci i dati di un fotografo</h4>
 	</div>
-	<form th:action="@{/fotografo}" method="POST" th:object="${fotografo}">
+	<form th:action="@{/fotografo}" method="post" th:object="${fotografo}">
 		<p>Nome :</p>
 		<p>
 			<input type="text" th:field="*{nome}" />
