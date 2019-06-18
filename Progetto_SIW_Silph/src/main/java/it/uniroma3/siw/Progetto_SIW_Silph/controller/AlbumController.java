@@ -1,6 +1,9 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,43 +39,27 @@ public class AlbumController {
 	@Autowired
 	AlbumValidator albumValidator;
 
-	@RequestMapping(value="/InserimentoFotografieAlbum", method= RequestMethod.POST )
-	public String selezioneFotografie(@Valid @ModelAttribute("album") Album album,
+	@RequestMapping(value="album", method= RequestMethod.GET )
+	public String selezioneFotografie(@RequestParam (required=false, name="fotografiScelti")Long[] valoriFotografi,
+			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie, @Valid @ModelAttribute("album") Album album,
 			Model model, BindingResult bindingResult){
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {
-			model.addAttribute("album",album);
-			model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
-			return "album_inserimentoFoto.html";
+			for(Long idFotografo:valoriFotografi ) {
+				Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
+				album.addFotografo(fotografoAlbum);
+			}
+			for(Long idFotografia:valoriFotografie) {
+				Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
+				album.addFotografia(fotografiaAlbum);
+			}
+			this.albumService.inserisci(album);
+			model.addAttribute("albums", albumService.tuttiGliAlbum());
+			return "albums.html";
 		}
 		else {
 			return "albumForm.html";
 		}
-	}
-	
-	@RequestMapping(value="/InserimentoFotografiAlbum", method=RequestMethod.POST)
-	public String selezioneFotografi(@Valid @ModelAttribute("album") Album album,
-			Model model,@Valid @RequestParam("fotografie") Long[] fotografieSelezionate) {
-		for(Long Idfoto:fotografieSelezionate) {
-			Fotografia fotografia= fotografiaService.FotografiaPerId(Idfoto);
-			album.addFotografia(fotografia);
-		}
-		model.addAttribute("album",album);
-		model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
-		return "album_inserimentoFotografi.html";
-	}
-
-	@RequestMapping(value = "/album", method = RequestMethod.POST)
-	public String newAlbum(@Valid @ModelAttribute("album") Album album,
-			Model model, @RequestParam("fotografi") Long[] fotografiSelezionati ){
-		for(Long Idfotografo:fotografiSelezionati) {
-			Fotografo fotografo= fotografoService.FotografoPerId(Idfotografo);
-			album.addFotografo(fotografo);
-		}
-		albumService.inserisci(album);
-		model.addAttribute("albums",albumService.tuttiGliAlbum());
-		return "albums.html";
-		
 	}
 	
 	@RequestMapping(value = "/album/{id}", method = RequestMethod.GET)
@@ -87,13 +74,11 @@ public class AlbumController {
 	}
 	
 
-	
-	//mmodificato 
     @RequestMapping(value ="/admin/addAlbum", method = RequestMethod.GET)
     public String inserimentoDatiadmin(Model model) {
     	model.addAttribute("album",new Album());
-        
-
+        model.addAttribute("fotografie", this.fotografiaService.tutteLeFotografie());
+        model.addAttribute("fotografi", this.fotografoService.tuttiIFotografi());
         return "albumForm.html";
     }
 	
