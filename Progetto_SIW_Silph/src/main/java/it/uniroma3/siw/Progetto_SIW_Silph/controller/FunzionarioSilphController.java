@@ -22,7 +22,7 @@ public class FunzionarioSilphController {
 	//dall'index, funzionario e utente
 	@RequestMapping("/toSito")
 	public String vaiAlSito() {
-		return "paginaSito.html";
+		return "home.html";
 	}
 	
 	//funzionario

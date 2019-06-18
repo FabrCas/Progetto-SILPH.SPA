@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
-    <title>Home</title>
+    <title>Silph.Spa</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
@@ -16,23 +17,28 @@
     <label for="chk" class="show-menu-btn">
       <i class="fas fa-ellipsis-h"></i>
     </label>
+
+    <ul class="menu">
+      <a href="/toSito">Home</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/welcome">Services</a>
+      <a href="/login">Login</a>     
+      <a href="/roma3">Contact</a>
+      <label for="chk" class="hide-menu-btn">
+        <i class="fas fa-times"></i>
+      </label>
+    </ul>
+  </div>
+
+
+<div class="content">
+    <center>
+      <img src="img.jpg" alt="">
+    </center>
+
+    <p>
+    	We are 
+    </p>
     </div>
-    
-	<div>
-		
-		<h4>Portale Silph</h4>
-	</div>
-	<h4>
-	<a href="/toSito">vai al sito</a>
-	</h4>
-	<div>
-	Sei un funzionario Silph? <a href="/login">Esegui l'accesso!</a>
-	<h4>
-	<!-- Qui andrÃ  messo il link per effettuare l'accesso -->
-	</h4>
-	</div>
-	
-	
-	
-</body>
+  </body>
 </html>
