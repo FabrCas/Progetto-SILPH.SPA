@@ -89,13 +89,10 @@ public class AlbumController {
 
 	
 	//mmodificato 
-    @RequestMapping(value ="/addAlbum", method = RequestMethod.POST)
+    @RequestMapping(value ="/admin/addAlbum", method = RequestMethod.POST)
     public String inserimentoDatiadmin(Model model) {
     	model.addAttribute("album",new Album());
-        UserDetails details = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String role = details.getAuthorities().iterator().next().getAuthority();    // get first authority
-        model.addAttribute("username", details.getUsername());
-        model.addAttribute("role", role);
+        
 
         return "albumForm.html";
     }
