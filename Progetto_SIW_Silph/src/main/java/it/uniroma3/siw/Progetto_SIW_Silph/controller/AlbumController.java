@@ -39,14 +39,9 @@ public class AlbumController {
 	@Autowired
 	AlbumValidator albumValidator;
 
-<<<<<<< HEAD
-	@RequestMapping(value="/admin/InserimentoFotografieAlbum", method= RequestMethod.GET )
-	public String selezioneFotografie(@Valid @ModelAttribute("album") Album album,
-=======
 	@RequestMapping(value="album", method= RequestMethod.GET )
 	public String selezioneFotografie(@RequestParam (required=false, name="fotografiScelti")Long[] valoriFotografi,
 			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie, @Valid @ModelAttribute("album") Album album,
->>>>>>> branch 'master' of https://github.com/FabrCas/Progetto-SILPH.SPA.git
 			Model model, BindingResult bindingResult){
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {
@@ -67,34 +62,6 @@ public class AlbumController {
 		}
 	}
 	
-<<<<<<< HEAD
-	@RequestMapping(value="InserimentoFotografiAlbum", method=RequestMethod.GET)
-	public String selezioneFotografi(@Valid @ModelAttribute("album") Album album,
-			Model model,@Valid @RequestParam("fotografie") Long[] fotografieSelezionate) {
-		for(Long Idfoto:fotografieSelezionate) {
-			Fotografia fotografia= fotografiaService.FotografiaPerId(Idfoto);
-			album.addFotografia(fotografia);
-		}
-		model.addAttribute("album",album);
-		model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
-		return "album_inserimentoFotografi.html";
-	}
-
-	@RequestMapping(value = "/album", method = RequestMethod.POST)
-	public String newAlbum(@Valid @ModelAttribute("album") Album album,
-			Model model, @RequestParam("fotografi") Long[] fotografiSelezionati ){
-		for(Long Idfotografo:fotografiSelezionati) {
-			Fotografo fotografo= fotografoService.FotografoPerId(Idfotografo);
-			album.addFotografo(fotografo);
-		}
-		albumService.inserisci(album);
-		model.addAttribute("albums",albumService.tuttiGliAlbum());
-		return "albums.html";
-		
-	}
-	
-=======
->>>>>>> branch 'master' of https://github.com/FabrCas/Progetto-SILPH.SPA.git
 	@RequestMapping(value = "/album/{id}", method = RequestMethod.GET)
 	public String getAlbum(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
@@ -122,3 +89,5 @@ public class AlbumController {
 	
 
 }
+
+
