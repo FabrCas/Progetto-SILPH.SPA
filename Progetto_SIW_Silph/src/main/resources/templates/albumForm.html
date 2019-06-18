@@ -18,8 +18,8 @@
 	</div>
 
 	<div class="content">
-		<h4>Inserisci i dati di un album</h4>
-	</div>
+		<h1><FONT COLOR=blue FACE="Comic Sans MS">Inserisci i dati di un album</FONT><br></h1>
+	
 	<form th:action="@{/album}" method="POST" th:object="${album}">
 		<p>Nome:</p>
 		<p>
@@ -27,28 +27,31 @@
 		</p>
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
 
-		<div>
-			<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+		
+			<h1>Seleziona i fotografi conosciuti dal sito:</h1>
 			<ul>
 				<li th:each="fotografo : ${fotografi}"><input type="checkbox"
 					name="fotografiScelti" value="fotografo.id"> <span
 					th:text="${fotografo.nome}"> nome fotografo</span> <span
 					th:text="${fotografo.cognome}"> cognome fotografo</span></li>
 			</ul>
-		</div>
-		<br> <br>
-		<div>
-			<h4>Seleziona le foto caricate sul sito:</h4>
-		</div>
+		
+		
+		
+			<h1>Seleziona le foto caricate sul sito:</h1>
+		
 
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
 				name="fotografieScelte" value="fotografia.id"> <span
 				th:text="${fotografia.nome}"> nome fotograia</span></li>
 		</ul>
+		
 		<p>
 			<button type="submit">Invio</button>
 		</p>
+		
 	</form>
+	</div>
 </body>
 </html>

@@ -32,15 +32,15 @@
   
 </div>
 <div class="content">
-<h4><FONT SIZE="5">Benvenuto,<span th:utext="${username}"></span>! Scegli una delle seguenti operazioni:</FONT><br></h4>
+<h1>Benvenuto,<span th:utext="${username}"></span>! Scegli una delle seguenti operazioni:</h1>
 
 
  
 
-<div> <a href="/inserimentoDati">Inserisci dati Silph.Spa</a>
-</div>
-<div> <a href="/visualizzaRichieste"> Visualizza le richieste di utilizzo da parte degli utenti</a>
-</div>
+ <p><a href="/inserimentoDati">Inserisci dati Silph.Spa</a><p>
+
+<p> <a href="/visualizzaRichieste"> Visualizza le richieste di utilizzo da parte degli utenti</a><p>
+
 <!-- 
 <h3 th:if="${role} == 'ADMIN'">
     <a href="/admin">Visit the admin page</a>

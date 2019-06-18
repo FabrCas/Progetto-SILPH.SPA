@@ -34,7 +34,7 @@ public class RichiestaFotoController {
 			return "richiestaFoto.html";
 		}
 		else {
-			return "paginaSito.html";
+			return "home.html";
 		}
 	}
 	
@@ -63,6 +63,6 @@ public class RichiestaFotoController {
 	@RequestMapping("/addRichiesta")
 	public String addRichiesta(Model model) {
 		model.addAttribute("richiestaFoto", new RichiestaFoto());
-		return "paginaSito.html";
+		return "home.html";
 	}
 }
