@@ -3,9 +3,28 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fotografi</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 <body>
 
+	<div class="header">
+		<h2 class="logo">SILPH SPA</h2>
+		<input type="checkbox" id="chk"> <label for="chk"
+			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
+		</label>
+	</div>
+	<div>
+	<h3>Segue la lista di fotografi che collaborano con il sito</h3>
+	<h3>cliccare sul fotografo per maggiori informazioni</h3>
+	<ul>
+		<li th:each="fotografo : ${fotografi}"><a
+			th:href="@{'/fotografo' + '/' +${fotografo.id}}" th:text="${fotografo.nome} ${fotografo.cognome}">
+				fotografo</a></li>
+	</ul>
+	</div>
 </body>
 </html>

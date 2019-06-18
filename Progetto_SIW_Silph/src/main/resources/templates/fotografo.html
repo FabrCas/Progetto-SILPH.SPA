@@ -3,9 +3,43 @@
 	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Fotografo</title>
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
 </head>
 <body>
 
+	<div class="header">
+		<h2 class="logo">SILPH SPA</h2>
+		<input type="checkbox" id="chk"> <label for="chk"
+			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
+		</label>
+	</div>
+
+	<h1>Informazioni sul fotografo :</h1>
+	<div>
+		Nome : <span th:text="${fotografo.nome}"></span>
+	</div>
+	<div>
+		Cognome : <span th:text="${fotografo.cognome}"></span>
+	</div>
+	<div>
+		<h4>Fotografie :</h4>
+		<ul>
+			<li th:each="fotografia: ${fotografo.fotografie}"><img
+				src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"></li>
+		</ul>
+		<h4>Album in cui ha partecipato :</h4>
+		<ul>
+			<li th:each="album: ${fotografo.albums}"><a
+				th:href="@{'/album' + '/' +${album.id}}"
+				th:text="${album.nome}"> nome album</a></li>
+		</ul>
+	</div>
+	<div>
+		<a href="paginaSito.html">ritorna al sito</a>
+	</div>
 </body>
 </html>

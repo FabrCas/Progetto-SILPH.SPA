@@ -1,17 +1,13 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
-import java.util.Map;
+
 
 /**
  * The MainController is a Spring Boot Controller to handle
@@ -66,4 +62,17 @@ public class MainController {
 
         return "admin";
     }
+    
+    
+	//ci manda alla pagina dei creatori
+	@RequestMapping("/roma3")
+	public String roma3(Model model) {
+		return "roma3studenti.html";
+	}
+	
+	//per altro
+	@RequestMapping("/gallery")
+	public String gallery(Model model) {
+		return "gallery.html";
+	}
 }
