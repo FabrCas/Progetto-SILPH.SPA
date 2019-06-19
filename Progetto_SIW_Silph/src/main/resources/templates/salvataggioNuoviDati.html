@@ -19,42 +19,61 @@
 		</label>
 	</div>
 	<!-- questo sotto serve per vedere se si è amministratori in quel momento -->
-	
+
 	<!--  
 	<h3 th:if="${role} == 'ADMIN'">
     <a href="/admin">Visit the admin page</a>
 </h3>
 -->
-	
-<br>
-<br>
-<br>
-	
-	<div class="content">
-	<h1>Che dati vuoi Inserire?</h1>
 
-<table>
-<tr>
-	<td>Inserimento nuovo album:  </td>
-		<form  action="/admin/addAlbum" method="GET">
-		
-	<td>
-	 
-			<button type="submit">Invio</button>
-			</td>
-		</tr>	
-			
-		</form>
+	<br>
+	<br>
+	<br>
+
+	<div class="content">
+		<h1>Che dati vuoi Inserire?</h1>
+
+		<table>
+			<tr>
+				<td><h3>
+						Inserimento nuovo album:
+						<h3></td>
+				<form action="/admin/addAlbum" method="GET">
+
+					<td>
+
+						<button type="submit">Invio</button>
+					</td>
+			</tr>
+
+			</form>
 		</table>
-		<h3>Inserimento nuova fotografia:</h3>
-		<form action="/admin/addFotografia" method="GET">
-			<button type="submit">Invio</button>
-		</form>
-		<h3>Inserimento nuovo fotografo:</h3>
-		<form action="/admin/addFotografo" method="GET">
-			<button type="submit">Invio</button>
-		</form>
-		
+
+
+		<table>
+			<tr>
+				<td>
+					<h3>Inserimento nuova fotografia:</h3>
+				</td>
+				<form action="/admin/addFotografia" method="GET">
+					<td>
+						<button type="submit">Invio</button>
+					</td>
+			</tr>
+			</form>
+		</table>
+
+
+		<table>
+			<tr>
+				<td>
+					<h3>Inserimento nuovo fotografo:</h3>
+				</td>
+				<form action="/admin/addFotografo" method="GET">
+					<td><button type="submit">Invio</button></td>
+			</tr>
+			</form>
+		</table>
 	</div>
 </body>
 </html>

@@ -21,14 +21,21 @@
 <br>
 	<div class="content">
 		<h1><FONT COLOR=blue FACE="Comic Sans MS">Inserisci i dati di un album</FONT><br></h1>
+	<br>
+
 	
 	<form th:action="@{/album}" method="POST" th:object="${album}">
-		<p>Nome:</p>
-		<p>
+		<table>
+		<tr><td><p>Nome:</p></td>
+		<td><p>
 			<input type="text" th:field="*{nome}" />
-		</p>
-		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+		</p></td>
+		<td><p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+	</tr>
 
+	</table>
+	<br>
+	<br>
 		
 			<p>Seleziona i fotografi conosciuti dal sito:</p>
 			<ul>
@@ -39,7 +46,8 @@
 			</ul>
 		
 		
-		
+		<br>
+		<br>
 			<p>Seleziona le foto caricate sul sito:</p>
 		
 
@@ -48,12 +56,13 @@
 				name="fotografieScelte" value="fotografia.id"> <span
 				th:text="${fotografia.nome}"> nome fotograia</span></li>
 		</ul>
-		
+		<br>
+		<br>
 		<p>
 			<button type="submit">Invio</button>
 		</p>
 		
-	</form>
+		</form>
 	</div>
 </body>
 </html>

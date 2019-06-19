@@ -91,4 +91,9 @@ public class MainController {
 	public String gallery(Model model) {
 		return "gallery.html";
 	}
+	
+	@RequestMapping("/fotografi")
+	public String fotografi(Model model) {
+		return "fotografi.html";
+	}
 }

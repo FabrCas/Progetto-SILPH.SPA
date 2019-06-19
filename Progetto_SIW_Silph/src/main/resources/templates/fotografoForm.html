@@ -36,13 +36,14 @@
 		<p th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></p>
 		
 	<div>
-		<h4>Seleziona le fotografie del fotografo :</h4>
+	<h4>Seleziona le fotografie del fotografo :</h4>
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
 				name="fotografieScelte" value="fotografia.id"> <span
 					th:text="${fotografia.nome}"> nome fotografia</span>
 				</li>
 		</ul>
+	
 		</div>
 		<br>
 		<br>
@@ -55,6 +56,8 @@
 				name="albumsScelti" value="album.id"> <span
 					th:text="${album.nome}"> nome album</span></li>
 		</ul>
+		<br>
+		<br>
 		<p>
 			<button type="submit">Invio</button>
 		</p>

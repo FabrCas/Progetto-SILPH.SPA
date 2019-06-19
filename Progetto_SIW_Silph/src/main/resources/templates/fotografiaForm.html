@@ -22,7 +22,7 @@
 	<br>
 	<div class="content">
 		<h1><FONT COLOR=blue FACE="Comic Sans MS">Inserisci i dati di una fotografia</FONT><br></h1>
-	
+	<br>
 	<form th:action="@{/fotografia}" method="POST" th:object="${fotografia}">
 		<table>
 		<tr>
@@ -49,6 +49,7 @@
 		<td th:if="${#fields.hasErrors('URLfoto')}" th:errors="*{URLfoto}"></td>
 		</tr>
 		</table>
+		<br>
 		<h4>Seleziona il fotografo autore della foto:</h4>
 			<ul>
 				<li th:each="fotografo : ${fotografi}"><input type="radio"
@@ -64,7 +65,8 @@
 					th:text="${album.nome}"> nome album</span>
 					</li>
 			</ul>
-
+<br>
+<br>
 		<p>
 			<button type="submit">Invio</button>
 		</p>
