@@ -41,15 +41,15 @@ head {
 		<h4>Fotografi che hanno partecipato :</h4>
 		<ul>
 			<li th:each="fotografo: ${album.fotografi}">
-			<a th:href="@{'/fotografo' + '/' +${fotografo.id}}"
-			th:text="${fotografo.nome}">fotografo</a>
+			<a th:href="@{'/fotografo' + '/' +${fotografo?.id}}"
+			th:text="${fotografo?.nome}">fotografo</a>
 			</li>
 		</ul>
 		
 		<h4>Fotografie dell'album :</h4>
 		<ul>
 			<li th:each="fotografia : ${album.fotografie}">
-			<img th:src="${fotografia.URLfoto}" th:alt="${fotografia.descrizione}">
+			<img th:src="${fotografia?.URLfoto}" alt="${fotografia?.descrizione}">
 			</li>
 		</ul>
 	</td>

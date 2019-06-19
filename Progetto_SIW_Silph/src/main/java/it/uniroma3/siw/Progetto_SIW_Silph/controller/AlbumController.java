@@ -1,4 +1,6 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
+import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,8 +34,8 @@ public class AlbumController {
 	AlbumValidator albumValidator;
 
 	@RequestMapping(value="/album", method= RequestMethod.POST )
-	public String newAlbum(@RequestParam (required=false, name="fotografiScelti")Long[] valoriFotografi,
-			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie, @Valid @ModelAttribute("album") Album album,
+	public String newAlbum(@RequestParam (required=false, name="fotografiScelti")List<Long> valoriFotografi,
+			@RequestParam (required=false, name="fotografieScelte")List<Long> valoriFotografie, @Valid @ModelAttribute("album") Album album,
 			Model model, BindingResult bindingResult){
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {

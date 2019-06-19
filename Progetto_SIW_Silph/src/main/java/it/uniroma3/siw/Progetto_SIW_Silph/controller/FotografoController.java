@@ -1,5 +1,7 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,8 @@ public class FotografoController {
 	private FotografiaService fotografiaService;
 	
 	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
-	public String newFotografo(@RequestParam (required=false, name="albumsScelti")Long[] valoriAlbums,
-			@RequestParam (required=false, name="fotografieScelte")Long[] valoriFotografie,
+	public String newFotografo(@RequestParam (required=false, name="albumsScelti") List<Long> valoriAlbums,
+			@RequestParam (required=false, name="fotografieScelte") List<Long> valoriFotografie,
 			@Valid @ModelAttribute("fotografo") Fotografo fotografo,
 			Model model, BindingResult bindingResult){
 		this.fotografoValidator.validate(fotografo, bindingResult);
