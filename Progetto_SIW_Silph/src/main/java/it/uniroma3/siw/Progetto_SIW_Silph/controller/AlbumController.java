@@ -69,6 +69,13 @@ public class AlbumController {
 		}
 	}
 	
+	//tutti gli album, per la home
+	@RequestMapping(value="/allAlbum")
+	public String allAlbum(Model model){
+		model.addAttribute("albums", this.albumService.tuttiGliAlbum());
+		return "albums.html";
+		
+	}
 
     @RequestMapping(value ="/admin/addAlbum", method = RequestMethod.GET)
     public String inserimentoDatiadmin(Model model) {

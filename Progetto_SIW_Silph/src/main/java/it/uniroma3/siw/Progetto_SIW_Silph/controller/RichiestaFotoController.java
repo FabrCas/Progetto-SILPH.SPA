@@ -70,7 +70,7 @@ public class RichiestaFotoController {
 	
 
 	//utente
-	@RequestMapping("/addRichiesta")
+	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
 	public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")String[] valoriFotografie,
 			Model model) {
 		RichiestaFoto richiestaFoto= new RichiestaFoto();

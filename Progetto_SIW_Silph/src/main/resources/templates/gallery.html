@@ -22,8 +22,8 @@
     <ul class="menu">
       <a href="/toSito">Home</a>
       <a href="/gallery">Galleria</a>
-       <a href="/fotografi">Fotografi</a>
-       <a href="/Album">Album</a>
+       <a href="/allFotografi">Fotografi</a>
+       <a href="/allAlbum">Album</a>
       <a href="/welcome">Servizi</a>
        <a href="/roma3">Contatti</a>
       <a href="/richiestaFoto">Shop</a>
@@ -45,9 +45,11 @@
 			<form th:action="@{/addRichiesta}" method= "POST" th:object="${fotografie}">
 			<ul>
 			<li th:each="fotografia : ${fotografie}">
+			<input type="checkbox"name="fotografieScelte" value="fotografia.nome">
 			<a th:href="${fotografia?.URLfoto}" data-lightbox="mygallery"><img th:src="${fotografia?.URLfoto}" width="250" height="250">
-			</a> <input type="checkbox"name="fotografieScelte" value="fotografia.nome">
+			</a> 
 				</li>
+				
 			</ul>
 			<br>
 		<br>

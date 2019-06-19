@@ -74,6 +74,14 @@ public class FotografoController {
 		}
 	}
 	
+	//tutti i fotografi, per la home
+	@RequestMapping(value="/allFotografi")
+	public String allFotografi(Model model){
+		model.addAttribute("fotografi", this.fotografoService.tuttiIFotografi());
+		return "fotografi.html";
+		
+	}
+	
 	@RequestMapping(value="/admin/addFotografo", method = RequestMethod.GET)
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
