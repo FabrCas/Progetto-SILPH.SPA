@@ -68,12 +68,6 @@ public class RichiestaFotoController {
 		return "richiesteFoto.html";
 	}
 	
-	
-	@RequestMapping(value="/gallery")
-	public String gallery(Model model) {
-		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
-		return "gallery.html";
-	}
 
 	//utente
 	@RequestMapping("/addRichiesta")

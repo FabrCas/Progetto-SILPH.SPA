@@ -71,7 +71,11 @@ public class FotografiaController {
 		}
 	}
 	
-	
+	@RequestMapping(value="/gallery")
+	public String gallery(Model model) {
+		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
+		return "gallery.html";
+	}
 	
 	@RequestMapping(value="/admin/addFotografia", method= RequestMethod.GET)
 	public String addFotografia(Model model) {

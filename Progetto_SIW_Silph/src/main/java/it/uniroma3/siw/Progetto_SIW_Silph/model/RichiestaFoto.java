@@ -23,6 +23,10 @@ public class RichiestaFoto{
 	@Column
 	private String nomeUtente;
 	@Column
+	private String email;
+	@Column
+	private String numero_telefonico;
+	@Column
 	private String descrizione;
 	@Column
 	@Temporal(TemporalType.DATE)

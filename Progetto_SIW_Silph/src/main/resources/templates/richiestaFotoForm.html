@@ -17,6 +17,29 @@
       <i class="fas fa-ellipsis-h"></i>
     </label>
     </div>
-
+    <h4>Ultima il tuo ordine:</h4>
+    <h2>Compila questa richiesta con i tuoi dati,</h2>
+    <h2>un nostro collaboratore, visualizzera la richiesta e ti contattera' il prima possibile! </h2>
+    <div>
+    <form th:action="@{/richiestaFoto}" th:method="post" th:object="${richiestaFoto}">
+    <div>
+    Nome: <input type="text" th:field="*{nomeUtente}" />
+    <p th:if="${#fields.hasErrors('nomeUtente')}" th:errors="*{nomeUtente}">
+    </div>
+     <div>
+    email: <input type="text" th:field="*{email}" />
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+    </div>
+     <div>
+    numero telefonico:<input type="text" th:field="*{numero_telefonico}" />
+    </div>
+     <div>
+    descrizione richiesta:<input type="text" th:field="*{descrizione}" />
+    </div>
+    <div>
+    <button type="submit">Invia richiesta</button>
+    </div>
+    </form>
+    </div>
 </body>
 </html>
