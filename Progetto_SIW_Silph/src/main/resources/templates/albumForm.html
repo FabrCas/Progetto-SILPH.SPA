@@ -41,7 +41,8 @@
 	
 	<form th:action="@{/album}" method="POST" th:object="${album}">
 		<table>
-		<tr><td><p>Nome:</p></td>
+		<tr>
+		<td><b>Nome:</b></td>
 		<td><p>
 			<input type="text" th:field="*{nome}" />
 		</p></td>
@@ -52,7 +53,7 @@
 	<br>
 	<br>
 		
-			<p>Seleziona i fotografi conosciuti dal sito:</p>
+			<b>Seleziona i fotografi conosciuti dal sito:</b>
 			<ul>
 				<li th:each="fotografo : ${fotografi}"><input type="checkbox"
 					th:name="fotografiScelti" th:value="${fotografo.id}"> <span
@@ -63,7 +64,7 @@
 		
 		<br>
 		<br>
-			<p>Seleziona le foto caricate sul sito:</p>
+			<b>Seleziona le foto caricate sul sito:</b>
 		
 
 		<ul>

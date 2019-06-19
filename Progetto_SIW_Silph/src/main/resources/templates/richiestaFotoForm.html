@@ -17,29 +17,45 @@
       <i class="fas fa-ellipsis-h"></i>
     </label>
     </div>
-    <h4>Ultima il tuo ordine:</h4>
+   
+    <br>
     <h2>Compila questa richiesta con i tuoi dati,</h2>
     <h2>un nostro collaboratore, visualizzera la richiesta e ti contattera' il prima possibile! </h2>
-    <div>
+    
     <form th:action="@{/richiestaFoto}" th:method="post" th:object="${richiestaFoto}">
-    <div>
-    Nome: <input type="text" th:field="*{nomeUtente}" />
-    <p th:if="${#fields.hasErrors('nomeUtente')}" th:errors="*{nomeUtente}">
-    </div>
-     <div>
-    email: <input type="text" th:field="*{email}" />
-    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
-    </div>
-     <div>
-    numero telefonico:<input type="text" th:field="*{numero_telefonico}" />
-    </div>
-     <div>
+    <table>
+    <tr>
+    <td>
+    <br>
+    Nome:  	<input type="text" th:field="*{nomeUtente}" />    </td>
+    
+    <td th:if="${#fields.hasErrors('nomeUtente')}" th:errors="*{nomeUtente}"></td>
+    </tr>
+    <tr>
+     <td>
+     <br>
+    email: <input type="text" th:field="*{email}" /> </td>
+    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> </td>
+    </tr>
+    <tr>
+     <td>
+     <br>
+    numero telefonico:<input type="text" th:field="*{numero_telefonico}" /></td>
+    </tr>
+    <tr>
+     <td>
+     <br>
     descrizione richiesta:<input type="text" th:field="*{descrizione}" />
-    </div>
-    <div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <br>
     <button type="submit">Invia richiesta</button>
-    </div>
+    </td>
+    </tr>
+    </table>
     </form>
-    </div>
+    
 </body>
 </html>
