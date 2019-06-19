@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.Progetto_SIW_Silph.model.RichiestaFoto;
+import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoValidator;
 
@@ -20,8 +21,14 @@ public class RichiestaFotoController {
 	@Autowired
 	RichiestaFotoService richiestaFotoService;
 	
+	@Autowired
+	FotografiaService fotografiaService;
+	
 	@Autowired 
 	RichiestaFotoValidator richiestaFotoValidator;
+	
+	
+	
 	
 	//utente
 	@RequestMapping(value="/richiestaFoto", method=RequestMethod.POST)
@@ -57,6 +64,14 @@ public class RichiestaFotoController {
 	public String visualizzaRichieste(Model model){
 		model.addAttribute("richiesteFoto", this.richiestaFotoService.tutteLeRichiesteFoto());
 		return "richiesteFoto.html";
+	}
+	
+	
+	@RequestMapping(value="/gallery")
+	public String gallery(Model model) {
+		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
+		model.addAttribute("richiestaFoto", new RichiestaFoto());
+		return "gallery.html";
 	}
 	
 	//utente

@@ -71,6 +71,8 @@ public class FotografiaController {
 		}
 	}
 	
+	
+	
 	@RequestMapping(value="/admin/addFotografia", method= RequestMethod.GET)
 	public String addFotografia(Model model) {
 		model.addAttribute("fotografia", new Fotografia());

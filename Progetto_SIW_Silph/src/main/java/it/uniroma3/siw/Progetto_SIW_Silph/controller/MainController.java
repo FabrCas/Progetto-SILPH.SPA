@@ -86,12 +86,6 @@ public class MainController {
 		return "roma3studenti.html";
 	}
 	
-	//per altro
-	@RequestMapping("/gallery")
-	public String gallery(Model model) {
-		return "gallery.html";
-	}
-	
 	@RequestMapping("/fotografi")
 	public String fotografi(Model model) {
 		return "fotografi.html";

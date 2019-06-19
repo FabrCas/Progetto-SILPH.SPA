@@ -38,21 +38,25 @@
   <div class="content">
 			<h2>Galleria fotografie</h2>
 </div>
+<h2> Questa è la nostra galleria!</h2>
+<br>
+<h2> Puoi comprare queste foto semplicemente selezionandole e cliccando poi su: "ultima la tua richiesta"</h2>
 			<div class="gallery">
+			<form th:action="@{/richiestaFoto}" method= "POST" th:object="${fotografie}">
+			<ul>
+			<li th:each="fotografia : ${fotografie}">
+			<a th:href="${fotografia?.URLfoto}" data-lightbox="mygallery"><img th:src="${fotografia?.URLfoto}" width="250" height="250">
+			</a> <input type="checkbox"name="fotografieScelte" value="fotografia.id">
+				</li>
+			</ul>
+			<br>
+		<br>
+		<p>
+			<button type="submit">ultima la tua richiesta</button>
+		</p>
 			
-			<a href="images/a.jpg" data-lightbox="mygallery" data-title="this is me"><img src="images/a.jpg"  width="250" height="250" ></a>
-			<a href="images/b.jpg" data-lightbox="mygallery"><img src="images/b.jpg" width="250" height="250" ></a>
-			<a href="images/c.jpg" data-lightbox="mygallery"><img src="images/c.jpg"  width="250" height="250" ></a>
-			<a href="images/d.jpg" data-lightbox="mygallery"><img src="images/d.jpg" width="250" height="250"></a>
-			<a href="images/e.jpg" data-lightbox="mygallery"><img src="images/e.jpg" width="250" height="250" ></a>
-			<a href="images/f.jpg" data-lightbox="mygallery"><img src="images/f.jpg" width="250" height="250" ></a>
-			<a href="images/g.jpg" data-lightbox="mygallery"><img src="images/g.jpg" width="250" height="250"></a>
-			<a href="images/h.jpg" data-lightbox="mygallery"><img src="images/h.jpg"  width="250" height="250" ></a>
-			<a href="images/i.jpg" data-lightbox="mygallery"><img src="images/i.jpg" width="250" height="250"></a>
-			<a href="images/l.jpg" data-lightbox="mygallery"><img src="images/l.jpg"  width="250" height="250" ></a>
-		
 			
-			
+			</form>
 			</div>
 
 		</body>
