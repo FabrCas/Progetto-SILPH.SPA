@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <head>
-<meta charset="ISO-8859-1">
 <title>Fotografia</title>
-<link rel="stylesheet" href="style.css">
+<style>
+head {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	color: white;
+	height: 100px;
+	text-align: center;
+	background: #34495e;
+	
+	
+}
+
+
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
-</head>
 <body>
 
-	<h1 align="center">Informazioni sulla fotografia :</h1>
+	
+
+	<h1>Informazioni sulla fotografia :</h1>
+	
 	<br>
 	<table>
-	<tr>
-	<td>
-		Nome : <span th:text="${fotografia.nome}"></span>
-	</td>
-	<tr>
-	<tr>
-	<td>
-		Descrizione : <span th:text="${fotografia.descrizione}"></span>
-	</td>
-	</tr>
-	<tr>
-	<td>
+		<tr>
+			<td>Nome : <span th:text="${fotografia.nome}"></span>
+			</td>
 		
-		Foto: <img th:src="${fotografia.URLfoto}" style="width:104px;height:142px;">
-	</td>
-	</tr>
-	<tr>
-	<td>
+		
+			<td>Descrizione : <span th:text="${fotografia.descrizione}"></span>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><img th:src="${fotografia.URLfoto}"
+				style="width: 104px; height: 142px;">
+			</td>
+		</tr>
+		<tr>
+			<td>Fotografo : <a
+				th:href="@{'/fotografo' + '/' +${fotografia?.fotografo?.id}}"
+				th:text="${fotografia?.fotografo?.nome}"> fotografo</a>
 
-		Fotografo : <a th:href="@{'/fotografo' + '/' +${fotografia?.fotografo?.id}}"
-			th:text="${fotografia?.fotografo?.nome}"> fotografo</a>
+			</td>
+		<tr>
+			<td>Album : <a
+				th:href="@{'/album' + '/' +${fotografia?.album?.id}}"
+				th:text="${fotografia?.album?.nome}"> album</a>
 
-	</td>
-	<tr>
-	<td>
-		Album : <a th:href="@{'/album' + '/' +${fotografia?.album?.id}}"
-			th:text="${fotografia?.album?.nome}"> album</a>
-
-	</td>
-	</tr>
+			</td>
+		</tr>
 	</table>
 	<div>
 		<a href="/toSito">ritorna al sito</a>

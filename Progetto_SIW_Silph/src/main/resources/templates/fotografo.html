@@ -2,16 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <head>
-<meta charset="ISO-8859-1">
 <title>Fotografo</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+head {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	color: white;
+	height: 100px;
+	text-align: center;
+	background: #34495e;
+	
+}
+
+
+</style>
+</head>
+
 
 <body>
 
 
 
-	<h1 align="center"><FONT COLOR=blue FACE="Comic Sans MS">Informazioni sul fotografo :</FONT><br></h1>
+	<h1>Informazioni sul fotografo :</h1>
 	<h4>
 		Nome : <span th:text="${fotografo.nome}"></span>
 	</h4>

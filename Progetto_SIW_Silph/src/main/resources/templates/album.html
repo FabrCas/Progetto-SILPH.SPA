@@ -4,6 +4,22 @@
   <head>
     <meta charset="utf-8">
     <title>Album</title>
+    <style>
+head {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	color: white;
+	height: 100px;
+	text-align: center;
+	background: #34495e;
+	
+}
+
+
+</style>
     
   
   </head>
@@ -13,17 +29,24 @@
 
 
 
-	<h1 align="center"><FONT COLOR=blue FACE="Comic Sans MS">Informazioni sull' album:</FONT><br></h1>
-	<h4>
+	<h1>Informazioni sull' album:</h1>
+	<table>
+	<tr>
+	<td>
 		Nome : <span th:text="${album.nome}"></span>
-	</h4>
-	<div>
-		<h4>Foto :</h4>
+	</td>
+	<td>
+		Foto :
 		<ul>
 			<li th:each="fotografia: ${album.fotografie}">
 			<img src="${fotografia.URLfoto}" alt="${fotografia.descrizione}">
 			</li>
 		</ul>
+		</td>
+		</tr>
+		
+<tr>
+<td>
 		<h4>Fotografi che hanno partecipato :</h4>
 		<ul>
 			<li th:each="fotografo: ${album.fotografi}">
@@ -31,11 +54,14 @@
 			th:text="${fotografo.nome}"> paolo</a>
 			</li>
 		</ul>
-	</div>
-	<div>
+	</td>
+	</tr>
+	<tr>
+	<td>
 	<a href="/toSito">ritorna al sito</a>
-	</div>
-	
+	</td>
+	</tr>
+	</table>
 	</div>
 </body>
 </html>
