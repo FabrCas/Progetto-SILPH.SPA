@@ -68,7 +68,7 @@
 
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
-				name="fotografieScelte" value="fotografia.id"> <span
+				th:name="fotografieScelte" th:value="${fotografia.id}"> <span
 				th:text="${fotografia.nome}"> nome fotograia</span></li>
 		</ul>
 		<br>
