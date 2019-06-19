@@ -57,12 +57,12 @@
 					th:text="${fotografo.cognome}"> cognome fotografo</span></li>
 			</ul>
 			<br> <br>
-			<h4>Seleziona i fotografi conosciuti dal sito:</h4>
+			<h4>Seleziona l'album relativo alla fotografia:</h4>
 			<ul>
 				<li th:each="album : ${albums}"><input type="radio"
 					name="albumScelto" value="album.id"> <span
-					th:text="${album.nome}"> nome fotografo</span> <span
-					th:text="${album.cognome}"> cognome fotografo</span></li>
+					th:text="${album.nome}"> nome album</span>
+					</li>
 			</ul>
 
 		<p>

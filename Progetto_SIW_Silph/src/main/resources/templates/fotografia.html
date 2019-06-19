@@ -27,14 +27,18 @@
 		Descrizione : <span th:text="${fotografia.descrizione}"></span>
 	</div>
 	<div>
-		Foto : <img src="${fotografia.URLfoto}"
-			alt="${fotografia.descrizione}">
+		Foto : <img th:src="${fotografia.URLfoto}"style="width:104px;height:142px;">
 	</div>
 	<div>
-		Fotografo : <a th:object="${fotografia} "th:href="@{'/fotografo' + '/' +*{fotografo.id}}" th:text="${fotografo.nome}"> fotografo</a>
+
+		Fotografo : <a th:href="@{'/fotografo' + '/' +${fotografia?.fotografo?.id}}"
+			th:text="${fotografia?.fotografo?.nome}"> fotografo</a>
+
 	</div>
 	<div>
-		Album : <a th:object="${fotografia}" th:href="@{'/album' + '/' +${album.id}}" th:text="${album.nome}"> paolo</a>
+		Album : <a th:href="@{'/album' + '/' +${fotografia?.album?.id}}"
+			th:text="${fotografia?.album?.nome}"> album</a>
+
 	</div>
 	<div>
 		<a href="/toSito">ritorna al sito</a>
