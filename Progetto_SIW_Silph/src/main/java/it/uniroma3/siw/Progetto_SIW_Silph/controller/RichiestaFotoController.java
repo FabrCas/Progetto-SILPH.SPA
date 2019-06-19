@@ -39,10 +39,14 @@ public class RichiestaFotoController {
 	public String newRichiestaFoto(@Valid @ModelAttribute("richiestaFoto") RichiestaFoto rf,
 			Model model, BindingResult bd) {
 		this.richiestaFotoValidator.validate(rf, bd);
+		if(!bd.hasErrors()) {
 			this.richiestaFotoService.inserisci(rf);
 			model.addAttribute("richiestaFoto", rf);
+			return "home.html";
+		}
+		else {
 			return "richiestaFoto.html";
-		
+		}
 	}
 	
 	//funzionario
@@ -69,7 +73,7 @@ public class RichiestaFotoController {
 
 	//utente
 	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
-public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")List<Long> valoriFotografie,
+public String addRichiesta(@RequestParam (required=false, value="fotografieScelte")List<Long> valoriFotografie,
 		Model model) {
 	RichiestaFoto richiestaFoto= new RichiestaFoto();
 	if(valoriFotografie!=null) {

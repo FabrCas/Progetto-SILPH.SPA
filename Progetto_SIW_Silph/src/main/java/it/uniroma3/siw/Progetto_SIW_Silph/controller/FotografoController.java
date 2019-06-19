@@ -38,7 +38,7 @@ public class FotografoController {
 	private FotografiaService fotografiaService;
 	
 	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
-	public String newFotografo(@RequestParam (required=false, name="albumsScelti") List<Long> valoriAlbums,
+	public String newFotografo(@RequestParam (required=false, value="albumsScelti") List<Long> valoriAlbums,
 			@RequestParam (required=false, name="fotografieScelte") List<Long> valoriFotografie,
 			@Valid @ModelAttribute("fotografo") Fotografo fotografo,
 			Model model, BindingResult bindingResult){
