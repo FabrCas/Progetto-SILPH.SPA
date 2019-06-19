@@ -54,7 +54,7 @@
 	<h4>Seleziona le fotografie del fotografo :</h4>
 		<ul>
 			<li th:each="fotografia : ${fotografie}"><input type="checkbox"
-				name="fotografieScelte" value="fotografia.id"> <span
+				th:name="fotografieScelte" th:value="${fotografia.id}"> <span
 					th:text="${fotografia.nome}"> nome fotografia</span>
 				</li>
 		</ul>
@@ -68,7 +68,7 @@
 	
 		<ul>
 			<li th:each="album : ${albums}"><input type="checkbox"
-				name="albumsScelti" value="album.id"> <span
+				th:name="albumsScelti" th:value="${album.id"> <span
 					th:text="${album.nome}"> nome album</span></li>
 		</ul>
 		<br>

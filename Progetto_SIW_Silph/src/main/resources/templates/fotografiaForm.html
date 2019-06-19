@@ -74,7 +74,7 @@
 		<h4>Seleziona il fotografo autore della foto:</h4>
 			<ul>
 				<li th:each="fotografo : ${fotografi}"><input type="radio"
-					name="fotografoScelto" value="fotografo.id"> <span
+					th:name="fotografoScelto" th:value="${fotografo.id}"> <span
 					th:text="${fotografo.nome}"> nome fotografo</span> <span
 					th:text="${fotografo.cognome}"> cognome fotografo</span></li>
 			</ul>
@@ -82,7 +82,7 @@
 			<h4>Seleziona l'album relativo alla fotografia:</h4>
 			<ul>
 				<li th:each="album : ${albums}"><input type="radio"
-					name="albumScelto" value="album.id"> <span
+					th:name="albumScelto" th:value="${album.id}"> <span
 					th:text="${album.nome}"> nome album</span>
 					</li>
 			</ul>

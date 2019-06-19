@@ -1,5 +1,6 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,6 +33,8 @@ public class Fotografo {
 	private List<Fotografia> fotografie;
 	
 	public Fotografo() {
+		this.albums=new ArrayList<Album> ();
+		this.fotografie= new ArrayList <Fotografia>();
 	}
 	public Long getId() {
 		return id;
