@@ -46,7 +46,7 @@
 			<ul>
 			<li th:each="fotografia : ${fotografie}">
 			<a th:href="${fotografia?.URLfoto}" data-lightbox="mygallery"><img th:src="${fotografia?.URLfoto}" width="250" height="250">
-			</a> <input type="checkbox"name="fotografieScelte" value="fotografia.id">
+			</a> <input type="checkbox"name="fotografieScelte" value="fotografia.nome">
 				</li>
 			</ul>
 			<br>
