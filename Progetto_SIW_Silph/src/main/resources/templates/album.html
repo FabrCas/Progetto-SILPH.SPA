@@ -36,7 +36,7 @@ head {
 		Nome : <span th:text="${album.nome}"></span>
 	</td>
 	<td>
-		Foto :
+		Foto :</td><td>
 		<ul>
 			<li th:each="fotografia: ${album.fotografie}">
 			<img src="${fotografia.URLfoto}" alt="${fotografia.descrizione}">

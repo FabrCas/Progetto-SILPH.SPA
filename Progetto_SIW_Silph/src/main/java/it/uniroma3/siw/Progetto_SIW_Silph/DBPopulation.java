@@ -64,6 +64,7 @@ public class DBPopulation implements ApplicationRunner {
         this.fotografiaService.inserisci(foto3);
         this.fotografiaService.inserisci(foto4);
         this.fotografiaService.inserisci(foto5);
+       
 
         System.out.println("Done.\n");
     }
