@@ -30,7 +30,7 @@
 		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
 
 		
-			<h1>Seleziona i fotografi conosciuti dal sito:</h1>
+			<p>Seleziona i fotografi conosciuti dal sito:</p>
 			<ul>
 				<li th:each="fotografo : ${fotografi}"><input type="checkbox"
 					name="fotografiScelti" value="fotografo.id"> <span
@@ -40,7 +40,7 @@
 		
 		
 		
-			<h1>Seleziona le foto caricate sul sito:</h1>
+			<p>Seleziona le foto caricate sul sito:</p>
 		
 
 		<ul>

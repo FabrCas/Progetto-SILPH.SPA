@@ -11,36 +11,40 @@
 </head>
 <body>
 
-	<div class="header">
-		<h2 class="logo">SILPH SPA</h2>
-		<input type="checkbox" id="chk"> <label for="chk"
-			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
-		</label>
-	</div>
-
-
-	<h1>Informazioni sulla fotografia :</h1>
-	<div>
+	<h1 align="center">Informazioni sulla fotografia :</h1>
+	<br>
+	<table>
+	<tr>
+	<td>
 		Nome : <span th:text="${fotografia.nome}"></span>
-	</div>
-	<div>
+	</td>
+	<tr>
+	<tr>
+	<td>
 		Descrizione : <span th:text="${fotografia.descrizione}"></span>
-	</div>
-	<div>
-		Foto :
-		(Non inserire URL con un numero di caratteri superiore a 255) <img th:src="${fotografia.URLfoto}" style="width:104px;height:142px;">
-	</div>
-	<div>
+	</td>
+	</tr>
+	<tr>
+	<td>
+		
+		<img th:src="${fotografia.URLfoto}" style="width:104px;height:142px;">
+	</td>
+	</tr>
+	<tr>
+	<td>
 
 		Fotografo : <a th:href="@{'/fotografo' + '/' +${fotografia?.fotografo?.id}}"
 			th:text="${fotografia?.fotografo?.nome}"> fotografo</a>
 
-	</div>
-	<div>
+	</td>
+	<tr>
+	<td>
 		Album : <a th:href="@{'/album' + '/' +${fotografia?.album?.id}}"
 			th:text="${fotografia?.album?.nome}"> album</a>
 
-	</div>
+	</td>
+	</tr>
+	</table>
 	<div>
 		<a href="/toSito">ritorna al sito</a>
 	</div>
