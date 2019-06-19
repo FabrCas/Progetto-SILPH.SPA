@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.RichiestaFoto;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoService;
@@ -70,14 +72,21 @@ public class RichiestaFotoController {
 	@RequestMapping(value="/gallery")
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
-		model.addAttribute("richiestaFoto", new RichiestaFoto());
 		return "gallery.html";
 	}
-	
+
 	//utente
 	@RequestMapping("/addRichiesta")
-	public String addRichiesta(Model model) {
-		model.addAttribute("richiestaFoto", new RichiestaFoto());
-		return "home.html";
+	public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")String[] valoriFotografie,
+			Model model) {
+		RichiestaFoto richiestaFoto= new RichiestaFoto();
+		if(valoriFotografie!=null) {
+			for(String nomeFotografia:valoriFotografie) {
+				Fotografia f= this.fotografiaService.fotografiaPerNome(nomeFotografia);
+				richiestaFoto.addFotografia(f);
+			}
+		}
+		model.addAttribute("richiestaFoto", richiestaFoto);
+		return "richiestaFotoForm.html";
 	}
 }

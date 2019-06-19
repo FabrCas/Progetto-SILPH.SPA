@@ -75,5 +75,8 @@ public class RichiestaFoto{
 		this.data = data;
 	}
 	
+	public void addFotografia (Fotografia f) {
+		this.getFotografie().add(f);
+	}
 	
 }

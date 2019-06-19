@@ -42,7 +42,7 @@
 <br>
 <h2> Puoi comprare queste foto semplicemente selezionandole e cliccando poi su: "ultima la tua richiesta"</h2>
 			<div class="gallery">
-			<form th:action="@{/richiestaFoto}" method= "POST" th:object="${fotografie}">
+			<form th:action="@{/addRichiesta}" method= "POST" th:object="${fotografie}">
 			<ul>
 			<li th:each="fotografia : ${fotografie}">
 			<a th:href="${fotografia?.URLfoto}" data-lightbox="mygallery"><img th:src="${fotografia?.URLfoto}" width="250" height="250">
