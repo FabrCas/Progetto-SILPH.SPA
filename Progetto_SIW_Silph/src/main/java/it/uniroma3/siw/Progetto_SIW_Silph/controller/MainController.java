@@ -96,4 +96,19 @@ public class MainController {
 	public String fotografi(Model model) {
 		return "fotografi.html";
 	}
+	
+	@RequestMapping("/fotografie")
+	public String fotografie(Model model) {
+		return "fotografie.html";
+	}
+	
+	@RequestMapping("/richiestaFoto")
+	public String richiestaFoto(Model model) {
+		return "richiestaFotoForm.html";
+	}
+	@RequestMapping("/Album")
+	public String richiestaAlbum(Model model) {
+		return "albums.html";
+	}
+	
 }

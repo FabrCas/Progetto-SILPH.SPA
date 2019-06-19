@@ -47,7 +47,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                     // everyone (authenticated or not) can access the home page
-                   .antMatchers(HttpMethod.GET, "/", "/index","/toSito","/gallery").permitAll()
+                   .antMatchers(HttpMethod.GET, "/", "/index","/toSito","/gallery","fotografie","/fotografi","rihiestaFoto","/Album").permitAll()
                     
                    
                    .antMatchers(HttpMethod.GET,"/admin/**").hasAnyAuthority("ADMIN")
