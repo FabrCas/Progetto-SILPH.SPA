@@ -1,5 +1,7 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +39,10 @@ public class RichiestaFotoController {
 	public String newRichiestaFoto(@Valid @ModelAttribute("richiestaFoto") RichiestaFoto rf,
 			Model model, BindingResult bd) {
 		this.richiestaFotoValidator.validate(rf, bd);
-		if(!bd.hasErrors()) {
 			this.richiestaFotoService.inserisci(rf);
 			model.addAttribute("richiestaFoto", rf);
 			return "richiestaFoto.html";
-		}
-		else {
-			return "home.html";
-		}
+		
 	}
 	
 	//funzionario
@@ -71,16 +69,19 @@ public class RichiestaFotoController {
 
 	//utente
 	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
-	public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")String[] valoriFotografie,
-			Model model) {
-		RichiestaFoto richiestaFoto= new RichiestaFoto();
-		if(valoriFotografie!=null) {
-			for(String nomeFotografia:valoriFotografie) {
-				Fotografia f= this.fotografiaService.fotografiaPerNome(nomeFotografia);
-				richiestaFoto.addFotografia(f);
-			}
+public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")List<String> valoriFotografie,
+		Model model) {
+	RichiestaFoto richiestaFoto= new RichiestaFoto();
+	if(valoriFotografie!=null) {
+		for(String nomeFotografia:valoriFotografie) {
+			Fotografia f= this.fotografiaService.fotografiaPerNome(nomeFotografia).get(0);
+			richiestaFoto.addFotografia(f);
 		}
-		model.addAttribute("richiestaFoto", richiestaFoto);
-		return "richiestaFotoForm.html";
 	}
+	else {
+		return "home.html";
+	}
+	model.addAttribute("richiestaFoto", richiestaFoto);
+	return "richiestaFotoForm.html";
+}
 }

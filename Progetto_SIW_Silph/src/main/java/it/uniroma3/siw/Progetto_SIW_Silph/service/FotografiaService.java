@@ -33,11 +33,8 @@ public class FotografiaService {
 	//momentaneo
 	//basti pensare al caso di due foto con nomi uguali
 	@Transactional
-	public Fotografia fotografiaPerNome(String nome) {
-		List<Fotografia> lista= this.fotografiaRepository.findByNome(nome);
-		if(lista!=null) {
-			return lista.get(0);
-		}
-		else return null;
+	public List<Fotografia> fotografiaPerNome(String nome) {
+		List<Fotografia> lista= (List<Fotografia>) this.fotografiaRepository.findByNome(nome);
+		return lista;
 	}
 }

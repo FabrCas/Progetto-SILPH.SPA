@@ -1,5 +1,6 @@
 package it.uniroma3.siw.Progetto_SIW_Silph.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +38,9 @@ public class RichiestaFoto{
 		@ManyToMany(fetch= FetchType.EAGER, cascade= {CascadeType.PERSIST})
 		private List<Fotografia> fotografie;
 	
-	public RichiestaFoto () {}
+	public RichiestaFoto () {
+		this.fotografie= new ArrayList<Fotografia>();
+	}
 	
 	public Long getId() {
 		return id;
@@ -82,5 +85,20 @@ public class RichiestaFoto{
 	public void addFotografia (Fotografia f) {
 		this.getFotografie().add(f);
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNumero_telefonico() {
+		return numero_telefonico;
+	}
+
+	public void setNumero_telefonico(String numero_telefonico) {
+		this.numero_telefonico = numero_telefonico;
+	}
+
 }
