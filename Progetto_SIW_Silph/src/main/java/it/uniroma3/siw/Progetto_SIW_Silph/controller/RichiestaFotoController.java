@@ -69,12 +69,12 @@ public class RichiestaFotoController {
 
 	//utente
 	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
-public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")List<String> valoriFotografie,
+public String addRichiesta(@RequestParam (required=false, name="fotografieScelte")List<Long> valoriFotografie,
 		Model model) {
 	RichiestaFoto richiestaFoto= new RichiestaFoto();
 	if(valoriFotografie!=null) {
-		for(String nomeFotografia:valoriFotografie) {
-			Fotografia f= this.fotografiaService.fotografiaPerNome(nomeFotografia).get(0);
+		for(Long nomeFotografia:valoriFotografie) {
+			Fotografia f= this.fotografiaService.FotografiaPerId(nomeFotografia);
 			richiestaFoto.addFotografia(f);
 		}
 	}
