@@ -55,6 +55,9 @@ public class FotografiaController {
 			return "fotografie.html";
 		}
 		else {
+			model.addAttribute("fotografia", fotografia);
+			model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
+			model.addAttribute("albums", albumService.tuttiGliAlbum());
 			return "fotografiaForm.html";
 		}
 	}

@@ -59,6 +59,9 @@ public class FotografoController {
 			return "fotografi.html";
 		}
 		else {
+			model.addAttribute("fotografo",fotografo);
+			model.addAttribute("albums", this.albumService.tuttiGliAlbum());
+			model.addAttribute("fotografie", this.fotografiaService.tutteLeFotografie());
 			return "fotografoForm.html";
 		}
 	}

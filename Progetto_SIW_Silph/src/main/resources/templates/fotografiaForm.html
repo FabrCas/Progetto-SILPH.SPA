@@ -51,9 +51,7 @@
 		<td>
 			<input type="text" th:field="*{nome}" />
 		</td>
-		<td>
-		<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
-		</td>
+		<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
 		</tr>
 		<tr>
 		<td>Descrizione :</td>

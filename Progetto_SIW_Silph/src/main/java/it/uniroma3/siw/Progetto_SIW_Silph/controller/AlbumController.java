@@ -54,6 +54,9 @@ public class AlbumController {
 			return "albums.html";
 		}
 		else {
+			model.addAttribute("album",album);
+			model.addAttribute("fotografie", this.fotografiaService.tutteLeFotografie());
+	        model.addAttribute("fotografi", this.fotografoService.tuttiIFotografi());
 			return "albumForm.html";
 		}
 	}
