@@ -31,9 +31,9 @@
       </label>
     </ul>
 	</div>
+	<br>
 	<div>
-	<h3>Segue la lista di fotografi che collaborano con il sito</h3>
-	<h3>cliccare sul fotografo per maggiori informazioni</h3>
+	<h3>Segue la lista di fotografi che collaborano con il sito, cliccare sul fotografo per maggiori informazioni</h3>
 	<ul>
 		<li th:each="fotografo : ${fotografi}"><a
 			th:href="@{'/fotografo' + '/' +${fotografo.id}}" th:text="${fotografo.nome}+${fotografo.cognome}">

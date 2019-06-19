@@ -31,9 +31,9 @@
       </label>
     </ul>
 	</div>
+	<br>
 	<div>
-	<h3>Segue la lista di album presenti sul sito</h3>
-	<h3>cliccare sull'album per maggiori informazioni</h3>
+	<h3>Segue la lista di album presenti sul sito, cliccare sull'album per maggiori informazioni</h3>
 	<ul>
 		<li th:each="album : ${albums}"><a
 			th:href="@{'/album' + '/' +${album.id}}" th:text="${album.nome}">

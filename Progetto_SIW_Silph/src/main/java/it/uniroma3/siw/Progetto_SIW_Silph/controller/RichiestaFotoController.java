@@ -35,14 +35,14 @@ public class RichiestaFotoController {
 	
 	
 	
-	//utente
+	//utente......requestparameter?
 	@RequestMapping(value="/richiestaFoto", method=RequestMethod.POST)
 	public String newRichiestaFoto(@Valid @ModelAttribute("richiestaFoto") RichiestaFoto rf,
 			Model model, BindingResult bd) {
 		this.richiestaFotoValidator.validate(rf, bd);
 		if(!bd.hasErrors()) {
 			this.richiestaFotoService.inserisci(rf);
-			model.addAttribute("richiestaFoto", rf);			//rf come secondo parametro
+			model.addAttribute("richiestaFoto", rf);			//rf come secondo parametro,usare service?
 			return "home.html";
 		}
 		else {
