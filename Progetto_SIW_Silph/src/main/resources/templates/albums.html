@@ -16,29 +16,30 @@
 		<input type="checkbox" id="chk"> <label for="chk"
 			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
 		</label>
-		 <ul class="menu">
-  <a href="/toSito">Home</a>
-      <a href="/gallery">Galleria</a>
-       <a href="/allFotografi">Fotografi</a>
-       <a href="/allAlbum">Album</a>
-      <a href="/welcome">Servizi</a>
-       <a href="/roma3">Contatti</a>
-     
-      
-     
-      <label for="chk" class="hide-menu-btn">
-        <i class="fas fa-times"></i>
-      </label>
-    </ul>
+		<ul class="menu">
+			<a href="/toSito">Home</a>
+			<a href="/gallery">Galleria</a>
+			<a href="/allFotografi">Fotografi</a>
+			<a href="/allAlbum">Album</a>
+			<a href="/welcome">Servizi</a>
+			<a href="/roma3">Contatti</a>
+
+
+
+			<label for="chk" class="hide-menu-btn"> <i
+				class="fas fa-times"></i>
+			</label>
+		</ul>
 	</div>
 	<br>
 	<div>
-	<h3>Segue la lista di album presenti sul sito, cliccare sull'album per maggiori informazioni</h3>
-	<ul>
-		<li th:each="album : ${albums}"><a
-			th:href="@{'/album' + '/' +${album.id}}" th:text="${album.nome}">
-				album</a></li>
-	</ul>
+		<h3>Segue la lista di album presenti sul sito, cliccare
+			sull'album per maggiori informazioni</h3>
+		<ul>
+			<li th:each="album : ${albums}"><a
+				th:href="@{'/album' + '/' +${album.id}}" th:text="${album.nome}">
+					album</a></li>
+		</ul>
 	</div>
 </body>
 </html>

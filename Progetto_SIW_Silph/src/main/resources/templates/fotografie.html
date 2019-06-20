@@ -16,28 +16,28 @@
 		<input type="checkbox" id="chk"> <label for="chk"
 			class="show-menu-btn"> <i class="fas fa-ellipsis-h"></i>
 		</label>
-			 <ul class="menu">
-      <a href="/toSito">Home</a>
-        
-      
-      <a href="/welcome">Servizi</a>
-       <a href="/roma3">Contatti</a>
-      
-     
-      <label for="chk" class="hide-menu-btn">
-        <i class="fas fa-times"></i>
-      </label>
-    </ul>
+		<ul class="menu">
+			<a href="/toSito">Home</a>
+
+
+			<a href="/welcome">Servizi</a>
+			<a href="/roma3">Contatti</a>
+
+
+			<label for="chk" class="hide-menu-btn"> <i
+				class="fas fa-times"></i>
+			</label>
+		</ul>
 	</div>
 	<br>
 	<div>
-	<h3>Segue la lista delle fotografie presenti sul sito</h3>
-	<h3>cliccare sulle fotografie per maggiori informazioni</h3>
-	<ul>
-		<li th:each="fotografia : ${fotografie}"><a
-			th:href="@{'/fotografia' + '/' +${fotografia.id}}" th:text="${fotografia.nome}">
-				fotografia</a></li>
-	</ul>
+		<h3>Segue la lista delle fotografie presenti sul sito</h3>
+		<h3>cliccare sulle fotografie per maggiori informazioni</h3>
+		<ul>
+			<li th:each="fotografia : ${fotografie}"><a
+				th:href="@{'/fotografia' + '/' +${fotografia.id}}"
+				th:text="${fotografia.nome}"> fotografia</a></li>
+		</ul>
 	</div>
 </body>
 </html>

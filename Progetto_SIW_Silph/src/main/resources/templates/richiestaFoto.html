@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="utf-8">
-    <title>Richiesta Di utilizzo</title>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+<head>
+<meta charset="utf-8">
+<title>Richiesta Di utilizzo</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
 head {
 	display: block;
 	margin-top: 0;
@@ -17,47 +17,50 @@ head {
 	height: 100px;
 	text-align: center;
 	background: #34495e;
-	
-	
+}
+
+li {
+	display: inline-block;
 }
 </style>
-  </head>
-  <body>
+</head>
+<body>
 
- 
+
 	<h1>Informazioni su richiesta di utilizzo:</h1>
 	<div>
-		<b>NOME UTENTE:</b> <span th:text="${richiestaFoto.nomeUtente}">qui va
-			il nome utente</span>
+		<b>NOME UTENTE:</b> <span th:text="${richiestaFoto.nomeUtente}">qui
+			va il nome utente</span>
 	</div>
 	<br>
 	<div>
-		<b>EMAIL UTENTE:</b> <span th:text="${richiestaFoto.email}"> qui va l'email utente</span>
+		<b>EMAIL UTENTE:</b> <span th:text="${richiestaFoto.email}">
+			qui va l'email utente</span>
 	</div>
 	<br>
 	<div>
-		<b>NUMERO TELEFONICO UTENTE:</b> <span th:text="${richiestaFoto.numero_telefonico}"> qui va il numero
-		 telefonico dell'utente</span>
+		<b>NUMERO TELEFONICO UTENTE:</b> <span
+			th:text="${richiestaFoto.numero_telefonico}"> qui va il numero
+			telefonico dell'utente</span>
 	</div>
 	<br>
 	<div>
-		<b>DESCRIZIONE RICHIESTA:</b> <span th:text="${richiestaFoto.descrizione}">qui va la 
-		descrizione della richiesta</span>
+		<b>DESCRIZIONE RICHIESTA:</b> <span
+			th:text="${richiestaFoto.descrizione}">qui va la descrizione
+			della richiesta</span>
 	</div>
-	
-	
+
+
 	<div>
 		<h4>FOTO RICHIESTE:</h4>
 		<ul>
-			<li th:each="fotografia: ${richiestaFoto.fotografie}">
-			
-			<img th:src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"
-			 style="width:104px;height:142px;" >
-			</li>
+			<li th:each="fotografia: ${richiestaFoto.fotografie}"><img
+				th:src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"
+				style="width: 104px; height: 142px;"></li>
 		</ul>
 	</div>
 	<div>
-	<a href="/toSito">ritorna al sito</a>
+		<a href="/toSito">ritorna al sito</a>
 	</div>
 </body>
 </html>

@@ -14,34 +14,29 @@ head {
 	height: 100px;
 	text-align: center;
 	background: #34495e;
-	
-	
 }
-
-
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 
-	
+
 
 	<h1>Informazioni sulla fotografia :</h1>
-	
+
 	<br>
 	<table>
 		<tr>
 			<td>Nome : <span th:text="${fotografia.nome}"></span>
 			</td>
-		
-		
+
+
 			<td>Descrizione : <span th:text="${fotografia.descrizione}"></span>
 			</td>
 		</tr>
-		
+
 		<tr>
 			<td><img th:src="${fotografia.URLfoto}"
-				style="width: 104px; height: 142px;">
-			</td>
+				style="width: 104px; height: 142px;"></td>
 		</tr>
 		<tr>
 			<td>Fotografo : <a
