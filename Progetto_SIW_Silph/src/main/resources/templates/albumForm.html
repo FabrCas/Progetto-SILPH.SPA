@@ -55,7 +55,7 @@
 		
 			<b>Seleziona i fotografi conosciuti dal sito:</b>
 			<ul>
-				<li th:each="fotografo : ${fotografi}"><input type="checkbox"
+				<li th:each="fotografo : ${fotografi}"><input th:type="checkbox"
 					th:name="fotografiScelti" th:value="${fotografo.id}"> <span
 					th:text="${fotografo.nome}"> nome fotografo</span> <span
 					th:text="${fotografo.cognome}"> cognome fotografo</span></li>

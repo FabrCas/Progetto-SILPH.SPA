@@ -32,25 +32,29 @@ public class AlbumController {
 	
 	@Autowired
 	AlbumValidator albumValidator;
+	
+	List<Long> IdfotografieAlbum;
+	List<Long> IdfotografiAlbum;
 
 	@RequestMapping(value="/album", method= RequestMethod.POST )
 	public String newAlbum(@RequestParam (required=false, name="fotografiScelti")List<Long> valoriFotografi,
 			@RequestParam (required=false, name="fotografieScelte")List<Long> valoriFotografie, @Valid @ModelAttribute("album") Album album,
 			Model model, BindingResult bindingResult){
+		//inizio stampe per la verifica su console del coretto funzionamento
+				for(Long f: valoriFotografi) {
+					System.out.println("Fotografo"+f);
+				}
+				//fine stampa
+				//inizio stampe per la verifica su console del coretto funzionamento
+				for(Long f1: valoriFotografie) {
+					System.out.println("Fotografia"+f1);
+				}
+				//fine stampa
+				IdfotografieAlbum=valoriFotografie;
+				IdfotografiAlbum=valoriFotografi;
 		this.albumValidator.validate(album, bindingResult);
 		if(!bindingResult.hasErrors()) {
-			if(valoriFotografi!=null) {
-			for(Long idFotografo:valoriFotografi ) {
-				Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
-				album.addFotografo(fotografoAlbum);
-			}
-			}
-			if (valoriFotografie!=null){
-			for(Long idFotografia:valoriFotografie) {
-				Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
-				album.addFotografia(fotografiaAlbum);
-			}
-			}
+			
 			this.albumService.inserisci(album);
 			model.addAttribute("albums", albumService.tuttiGliAlbum());
 			return "albums.html";
@@ -66,6 +70,26 @@ public class AlbumController {
 	@RequestMapping(value = "/album/{id}", method = RequestMethod.GET)
 	public String getAlbum(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
+			Album a=this.albumService.AlbumPerId(id);
+			for(Long f: IdfotografiAlbum) {
+				System.out.println("Fotografo"+f);
+			}
+			for(Long f1: IdfotografieAlbum) {
+				System.out.println("Fotografia"+f1);
+			}
+			
+			if(IdfotografiAlbum!=null) {
+				for(Long idFotografo:IdfotografiAlbum ) {
+					Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
+					a.addFotografo(fotografoAlbum);
+				}
+				}
+				if (IdfotografieAlbum!=null){
+				for(Long idFotografia:IdfotografieAlbum) {
+					Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
+					a.addFotografia(fotografiaAlbum);
+				}
+				}
 			model.addAttribute("album", this.albumService.AlbumPerId(id));
 			return "album.html";
 		}else {
