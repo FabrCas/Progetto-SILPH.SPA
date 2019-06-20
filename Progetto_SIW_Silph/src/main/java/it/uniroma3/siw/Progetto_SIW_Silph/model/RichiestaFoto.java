@@ -35,15 +35,15 @@ public class RichiestaFoto{
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	//associazione
-	
+
 	//nessun evento in cascata utile per questa associazione
-		@ManyToMany(fetch= FetchType.EAGER, cascade= {CascadeType.PERSIST})
-		private List<Fotografia> fotografie;
-	
+	@ManyToMany(fetch= FetchType.EAGER, cascade= {CascadeType.PERSIST})
+	private List<Fotografia> fotografie;
+
 	public RichiestaFoto () {
 		this.fotografie= new ArrayList<Fotografia>();
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -83,7 +83,7 @@ public class RichiestaFoto{
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+
 	public void addFotografia (Fotografia f) {
 		this.getFotografie().add(f);
 	}

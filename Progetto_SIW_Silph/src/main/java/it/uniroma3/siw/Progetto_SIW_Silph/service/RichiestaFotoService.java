@@ -14,13 +14,13 @@ import it.uniroma3.siw.Progetto_SIW_Silph.repository.RichiestaFotoRepository;
 public class RichiestaFotoService {
 	@Autowired
 	private RichiestaFotoRepository richiestaFotoRepository;
-	
+
 	@Transactional
 	public RichiestaFoto inserisci (RichiestaFoto r) {
 		//questa classe dipende dal repository
 		return richiestaFotoRepository.save(r);
 	}
-	
+
 	@Transactional
 	public List<RichiestaFoto> tutteLeRichiesteFoto () {
 		return (List<RichiestaFoto>) richiestaFotoRepository.findAll();

@@ -15,13 +15,13 @@ import it.uniroma3.siw.Progetto_SIW_Silph.repository.UtenteRepository;
 public class UtenteService {
 	@Autowired
 	private UtenteRepository utenteRepository;
-	
+
 	@Transactional
 	public Utente inserisci (Utente fs) {
 		//questa classe dipende dal repository
 		return utenteRepository.save(fs);
 	}
-	
+
 	@Transactional
 	public List<Utente> tuttiGliUtenti () {
 		return (List<Utente>) utenteRepository.findAll();

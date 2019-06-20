@@ -11,8 +11,8 @@ import javax.persistence.Id;
 public class Utente {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", columnDefinition = "serial", nullable = false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id", columnDefinition = "serial", nullable = false)
 	protected Long id;
 	@Column
 	protected String nome;
@@ -22,10 +22,10 @@ public class Utente {
 	private String username;
 	@Column
 	protected String password;
-	
+
 	@Column(name = "role")
-    protected String role;
-	
+	protected String role;
+
 	public Utente(Long id, String nome,String cognome, String username, String password, String role) {
 		super();
 		this.id = id;
@@ -37,7 +37,7 @@ public class Utente {
 	}
 
 	public Utente() {}
-	 
+
 	public String getCognome() {
 		return cognome;
 	}
