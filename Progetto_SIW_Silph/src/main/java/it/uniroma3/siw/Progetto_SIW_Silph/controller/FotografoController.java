@@ -24,22 +24,22 @@ import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografoValidator;
 
 @Controller
 public class FotografoController {
-	
+
 	@Autowired
 	private FotografoService fotografoService;
-	
+
 	@Autowired
 	private FotografoValidator fotografoValidator;
-	
+
 	@Autowired
 	private AlbumService albumService;
-	
+
 	@Autowired
 	private FotografiaService fotografiaService;
-	
+
 	List<Long> IdfotografieFotografo;
 	List<Long> IdAlbumFotografo;
-	
+
 	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
 	public String newFotografo(@RequestParam (required=false, value="albumsScelti") List<Long> valoriAlbums,
 			@RequestParam (required=false, name="fotografieScelte") List<Long> valoriFotografie,
@@ -49,7 +49,6 @@ public class FotografoController {
 		this.IdfotografieFotografo=valoriFotografie;
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
-		
 			this.fotografoService.inserisci(fotografo);
 			model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
 			return "fotografi.html";
@@ -61,7 +60,7 @@ public class FotografoController {
 			return "fotografoForm.html";
 		}
 	}
-	
+
 	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
 	public String getFotografo(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
@@ -71,13 +70,13 @@ public class FotografoController {
 					Album albumFotografo= this.albumService.AlbumPerId(idAlbum);
 					f.addAlbum(albumFotografo);
 				}
-				}
-				if (IdfotografieFotografo!=null){
+			}
+			if (IdfotografieFotografo!=null){
 				for(Long idFotografia:IdfotografieFotografo) {
 					Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
 					f.addFotografia(fotografiaAlbum);
 				} 
-				}
+			}
 			model.addAttribute("fotografo", f);
 			return "fotografo.html";
 		}else {
@@ -85,15 +84,15 @@ public class FotografoController {
 			return "fotografi.html";
 		}
 	}
-	
+
 	//tutti i fotografi, per la home
 	@RequestMapping(value="/allFotografi")
 	public String allFotografi(Model model){
 		model.addAttribute("fotografi", this.fotografoService.tuttiIFotografi());
 		return "fotografi.html";
-		
+
 	}
-	
+
 	@RequestMapping(value="/admin/addFotografo", method = RequestMethod.GET)
 	public String addFotografo(Model model) {
 		model.addAttribute("fotografo", new Fotografo());
@@ -101,5 +100,4 @@ public class FotografoController {
 		model.addAttribute("fotografie", this.fotografiaService.tutteLeFotografie());
 		return "fotografoForm.html";
 	}
-
 }

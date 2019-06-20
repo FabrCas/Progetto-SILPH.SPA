@@ -24,16 +24,16 @@ import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoValidator;
 public class RichiestaFotoController {
 	@Autowired
 	RichiestaFotoService richiestaFotoService;
-	
+
 	@Autowired
 	FotografiaService fotografiaService;
-	
+
 	@Autowired 
 	RichiestaFotoValidator richiestaFotoValidator;
-	
+
 	List<Long> fotoRichieste;
-	
-	
+
+
 	@RequestMapping(value="/richiestaFoto", method=RequestMethod.POST)
 	public String newRichiestaFoto(@Valid @ModelAttribute("richiestaFoto") RichiestaFoto rf,
 			Model model, BindingResult bd) {
@@ -59,7 +59,7 @@ public class RichiestaFotoController {
 			return "richiestaFotoForm.html";
 		}
 	}
-	
+
 	//funzionario
 	@RequestMapping(value="/richiestaFoto/{id}", method= RequestMethod.GET)
 	public String getRichiestaFoto(@PathVariable("id") Long id, Model model){
@@ -72,32 +72,32 @@ public class RichiestaFotoController {
 			return "richiesteFoto.html";
 		}
 	}
-		
-	
+
+
 	//funzionario
 	@RequestMapping("/visualizzaRichieste")
 	public String visualizzaRichieste(Model model){
 		model.addAttribute("richiesteFoto", this.richiestaFotoService.tutteLeRichiesteFoto());
 		return "richiesteFoto.html";
 	}
-	
+
 
 	//utente
 	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
-public String addRichiesta(@RequestParam (required=false, value="fotografieScelte")List<Long> valoriFotografie,
-		Model model) {
-		
-	RichiestaFoto richiestaFoto= new RichiestaFoto();
-	if(valoriFotografie!=null) {
-		this.fotoRichieste=valoriFotografie;
+	public String addRichiesta(@RequestParam (required=false, value="fotografieScelte")List<Long> valoriFotografie,
+			Model model) {
+
+		RichiestaFoto richiestaFoto= new RichiestaFoto();
+		if(valoriFotografie!=null) {
+			this.fotoRichieste=valoriFotografie;
+		}
+		else {
+			return "home.html";
+		}
+		model.addAttribute("richiestaFoto", richiestaFoto);
+		for(Fotografia f: richiestaFoto.getFotografie()) {
+			System.out.println(f.getId());
+		}
+		return "richiestaFotoForm.html";
 	}
-	else {
-		return "home.html";
-	}
-	model.addAttribute("richiestaFoto", richiestaFoto);
-	for(Fotografia f: richiestaFoto.getFotografie()) {
-		System.out.println(f.getId());
-	}
-	return "richiestaFotoForm.html";
-}
 }

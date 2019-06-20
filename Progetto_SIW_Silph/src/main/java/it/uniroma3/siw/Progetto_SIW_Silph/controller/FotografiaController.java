@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografo;
-import it.uniroma3.siw.Progetto_SIW_Silph.model.RichiestaFoto;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.AlbumService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaValidator;
@@ -25,16 +24,16 @@ import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografoService;
 public class FotografiaController {
 	@Autowired 
 	FotografiaService fotografiaService;
-	
+
 	@Autowired
 	AlbumService albumService;
-	
+
 	@Autowired 
 	FotografoService fotografoService;
-	
+
 	@Autowired
 	FotografiaValidator fotografiaValidator;
-	
+
 	@RequestMapping(value="/fotografia", method= RequestMethod.POST )
 	public String newFotografia(@RequestParam (required=false, name="fotografoScelto")Long valoreFotografo,
 			@RequestParam (required=false, name="albumScelto")Long valoreAlbum,
@@ -47,7 +46,7 @@ public class FotografiaController {
 				fotografia.setFotografo(fotografoFotografia);
 			}
 			if (valoreAlbum!=null){
-			
+
 				Album albumFotografia= this.albumService.AlbumPerId(valoreAlbum);
 				fotografia.setAlbum(albumFotografia);
 			}
@@ -62,8 +61,8 @@ public class FotografiaController {
 			return "fotografiaForm.html";
 		}
 	}
-	
-	
+
+
 	@RequestMapping(value = "fotografia/{id}", method = RequestMethod.GET)
 	public String getFotografia(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
@@ -74,13 +73,13 @@ public class FotografiaController {
 			return "fotografie.html";
 		}
 	}
-	
+
 	@RequestMapping(value="/gallery")
 	public String gallery(Model model) {
 		model.addAttribute("fotografie", fotografiaService.tutteLeFotografie());
 		return "gallery.html";
 	}
-	
+
 	@RequestMapping(value="/admin/addFotografia", method= RequestMethod.GET)
 	public String addFotografia(Model model) {
 		model.addAttribute("fotografia", new Fotografia());
@@ -88,6 +87,4 @@ public class FotografiaController {
 		model.addAttribute("albums", albumService.tuttiGliAlbum());
 		return "fotografiaForm.html";
 	}
-
-
 }

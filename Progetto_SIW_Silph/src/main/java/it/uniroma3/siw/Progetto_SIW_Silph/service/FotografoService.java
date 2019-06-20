@@ -14,13 +14,13 @@ public class FotografoService {
 	//TODO
 	@Autowired
 	private FotografoRepository fotografoRepository;
-	
+
 	@Transactional
 	public Fotografo inserisci (Fotografo f) {
 		//questa classe dipende dal repository
 		return fotografoRepository.save(f);
 	}
-	
+
 	@Transactional
 	public List<Fotografo> tuttiIFotografi () {
 		return (List<Fotografo>) fotografoRepository.findAll();

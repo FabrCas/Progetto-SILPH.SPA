@@ -22,16 +22,16 @@ public class Fotografo {
 	@Column
 	private String cognome;
 	//associazioni
-	
+
 	@ManyToMany(fetch= FetchType.LAZY, cascade= {CascadeType.PERSIST,
 			CascadeType.REFRESH})
 	private List <Album> albums;
-	
+
 	@OneToMany(mappedBy="fotografo", fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.REFRESH,
-		CascadeType.REMOVE})
+					CascadeType.REMOVE})
 	private List<Fotografia> fotografie;
-	
+
 	public Fotografo() {
 		this.albums=new ArrayList<Album> ();
 		this.fotografie= new ArrayList <Fotografia>();

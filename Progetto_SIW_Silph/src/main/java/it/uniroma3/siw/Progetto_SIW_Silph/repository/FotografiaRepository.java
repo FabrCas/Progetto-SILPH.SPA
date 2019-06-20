@@ -9,6 +9,6 @@ import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 
 @Repository
 public interface FotografiaRepository extends CrudRepository <Fotografia, Long> {
-		//Aggiungere poi le query necessarie
+	//Aggiungere poi le query necessarie
 	public List<Fotografia> findByNome (String nome);
 }

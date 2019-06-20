@@ -14,18 +14,18 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Album {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@Column
 	private String nome;
 	//associazioni
-	
+
 	@ManyToMany(mappedBy="albums", fetch= FetchType.LAZY,
 			cascade= {CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Fotografo> fotografi;
-	
+
 	@OneToMany(mappedBy="album", fetch=FetchType.EAGER,
 			cascade= {CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<Fotografia> fotografie;
@@ -35,7 +35,7 @@ public class Album {
 		this.fotografi= new ArrayList <Fotografo>();
 		this.fotografie= new ArrayList <Fotografia>();
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -60,11 +60,11 @@ public class Album {
 	public void setFotografi(List<Fotografo> fotografi) {
 		this.fotografi = fotografi;
 	}
-	
+
 	public void addFotografo(Fotografo f) {
 		this.getFotografi().add(f);
 	}
-	
+
 	public void addFotografia(Fotografia f) {
 		this.getFotografie().add(f); 
 	}

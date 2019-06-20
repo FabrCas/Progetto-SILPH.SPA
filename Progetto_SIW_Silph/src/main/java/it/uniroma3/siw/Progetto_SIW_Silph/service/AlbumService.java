@@ -13,13 +13,13 @@ public class AlbumService {
 	//TODO
 	@Autowired
 	private AlbumRepository albumRepostiory;
-	
+
 	@Transactional
 	public Album inserisci (Album a) {
 		//questa classe dipende dal repository
 		return albumRepostiory.save(a);
 	}
-	
+
 	@Transactional
 	public List<Album> tuttiGliAlbum () {
 		return (List<Album>) albumRepostiory.findAll();

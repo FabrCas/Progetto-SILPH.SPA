@@ -23,83 +23,84 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {
 
-    /**
-     * A reference to the environment of properties defined through the application.properties file.
-     * It is automatically wired before at launch.
-     */
-    @Autowired
-    private Environment environment;
+	/**
+	 * A reference to the environment of properties defined through the application.properties file.
+	 * It is automatically wired before at launch.
+	 */
+	@Autowired
+	private Environment environment;
 
-    /**
-     * The datasource where to find users in our application.
-     * It is a bean (meaning that it is only initialized once)
-     */
-    private DataSource dataSource;
+	/**
+	 * The datasource where to find users in our application.
+	 * It is a bean (meaning that it is only initialized once)
+	 */
+	@SuppressWarnings("unused")
+	private DataSource dataSource;
 
-    /**
-     * The configure method is the main method in the AuthConfiguration.
-     * it
-     */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                // authorization paragraph: we are going to define here WHO can access WHAT pages
-                .authorizeRequests()
+	/**
+	 * The configure method is the main method in the AuthConfiguration.
+	 * it
+	 */
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+		// authorization paragraph: we are going to define here WHO can access WHAT pages
+		.authorizeRequests()
 
-                    // everyone (authenticated or not) can access the home page
-                   .antMatchers(HttpMethod.GET, "/", "/index","/toSito","/gallery","fotografie","/fotografi","rihiestaFoto","/Album").permitAll()
-                    
-                   
-                   .antMatchers(HttpMethod.GET,"/admin/**").hasAnyAuthority("ADMIN")
-                    // only admin can access the admin page
-                  .antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
-                    
-                  //  .antMatchers(HttpMethod.GET, "/inserimentoDati").hasAnyAuthority("ADMIN")
-                    
-                   
-                  //  .antMatchers(HttpMethod.POST, "/addAlbum").hasAnyAuthority("ADMIN")
+		// everyone (authenticated or not) can access the home page
+		.antMatchers(HttpMethod.GET, "/", "/index","/toSito","/gallery","fotografie","/fotografi","rihiestaFoto","/Album").permitAll()
 
-                    
-                    // all authenticated users can access all the other pages (that is, welcome) //
-                   //.anyRequest().authenticated()
-.anyRequest().permitAll()
-                // login paragraph: we are going to define here how to login
-                // use formlogin protocol to perform login
-                .and().formLogin()
-                    // after login is successful, redirect to /welcome page
-                    .defaultSuccessUrl("/welcome")
-                //NOTE: we are using the default configuration for login,
-                // meaning that the /login url is automatically mapped to auto-generated page.
-                // for our own page, we would need to use loginPage()
-                // and write a method for accessing it with GET method (but Spring would still handle the POST automatically)
 
-                // logout paragraph: we are going to define here how to logout
-                .and().logout()
-                    // logout is performed when sending a GET to "/logout"
-                    .logoutUrl("/logout")
-                    // after logout is successful, redirect to / page (home)
-                    .logoutSuccessUrl("/toSito");		//prima era .logoutSuccessUrl("/");	
-    }
+		.antMatchers(HttpMethod.GET,"/admin/**").hasAnyAuthority("ADMIN")
+		// only admin can access the admin page
+		.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ADMIN")
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(this.buildDatasource())
-                .authoritiesByUsernameQuery("SELECT username, role FROM funzionario_silph WHERE username=?")
-                .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM funzionario_silph WHERE username=?");
-    }
+		//  .antMatchers(HttpMethod.GET, "/inserimentoDati").hasAnyAuthority("ADMIN")
 
-    @Bean
-    DataSource buildDatasource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
-        dataSource.setUrl(environment.getProperty("spring.datasource.url"));
-        dataSource.setUsername(environment.getProperty("spring.datasource.username"));
-        dataSource.setPassword(environment.getProperty("spring.datasource.password"));
-        return dataSource;
-    }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+		//  .antMatchers(HttpMethod.POST, "/addAlbum").hasAnyAuthority("ADMIN")
+
+
+		// all authenticated users can access all the other pages (that is, welcome) //
+		//.anyRequest().authenticated()
+		.anyRequest().permitAll()
+		// login paragraph: we are going to define here how to login
+		// use formlogin protocol to perform login
+		.and().formLogin()
+		// after login is successful, redirect to /welcome page
+		.defaultSuccessUrl("/welcome")
+		//NOTE: we are using the default configuration for login,
+		// meaning that the /login url is automatically mapped to auto-generated page.
+		// for our own page, we would need to use loginPage()
+		// and write a method for accessing it with GET method (but Spring would still handle the POST automatically)
+
+		// logout paragraph: we are going to define here how to logout
+		.and().logout()
+		// logout is performed when sending a GET to "/logout"
+		.logoutUrl("/logout")
+		// after logout is successful, redirect to / page (home)
+		.logoutSuccessUrl("/toSito");		//prima era .logoutSuccessUrl("/");	
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(this.buildDatasource())
+		.authoritiesByUsernameQuery("SELECT username, role FROM funzionario_silph WHERE username=?")
+		.usersByUsernameQuery("SELECT username, password, 1 as enabled FROM funzionario_silph WHERE username=?");
+	}
+
+	@Bean
+	DataSource buildDatasource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
+		dataSource.setUrl(environment.getProperty("spring.datasource.url"));
+		dataSource.setUsername(environment.getProperty("spring.datasource.username"));
+		dataSource.setPassword(environment.getProperty("spring.datasource.password"));
+		return dataSource;
+	}
+
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

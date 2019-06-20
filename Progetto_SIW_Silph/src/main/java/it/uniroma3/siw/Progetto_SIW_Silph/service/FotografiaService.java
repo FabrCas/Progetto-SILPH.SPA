@@ -14,13 +14,13 @@ import it.uniroma3.siw.Progetto_SIW_Silph.repository.FotografiaRepository;
 public class FotografiaService {
 	@Autowired
 	private FotografiaRepository fotografiaRepository;
-	
+
 	@Transactional
 	public Fotografia inserisci (Fotografia f) {
 		//questa classe dipende dal repository
 		return fotografiaRepository.save(f);
 	}
-	
+
 	@Transactional
 	public List<Fotografia> tutteLeFotografie () {
 		return (List<Fotografia>) fotografiaRepository.findAll();
@@ -29,7 +29,7 @@ public class FotografiaService {
 	public Fotografia FotografiaPerId (Long id) {
 		return this.fotografiaRepository.findById(id).get();
 	}
-	
+
 	//momentaneo
 	//basti pensare al caso di due foto con nomi uguali
 	@Transactional

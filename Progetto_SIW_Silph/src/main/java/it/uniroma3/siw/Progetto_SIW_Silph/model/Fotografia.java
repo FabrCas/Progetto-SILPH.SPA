@@ -21,18 +21,18 @@ public class Fotografia {
 	@Column 
 	private String URLfoto;
 	//associazioni
-	
+
 	@ManyToOne(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST,
 			CascadeType.REFRESH})
 	private Fotografo fotografo;
-	
+
 	@ManyToOne(fetch=FetchType.EAGER,cascade= {CascadeType.PERSIST,
 			CascadeType.REFRESH})
 	private Album album;
-	
+
 	public Fotografia() {
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -58,7 +58,7 @@ public class Fotografia {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	
+
 	public String getURLfoto() {
 		return URLfoto;
 	}
@@ -66,7 +66,7 @@ public class Fotografia {
 	public void setURLfoto(String uRLfoto) {
 		URLfoto = uRLfoto;
 	}
-	
+
 	public Album getAlbum() {
 		return album;
 	}
