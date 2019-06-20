@@ -19,7 +19,6 @@ import it.uniroma3.siw.Progetto_SIW_Silph.model.RichiestaFoto;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.RichiestaFotoValidator;
-import net.bytebuddy.asm.Advice.This;
 
 @Controller
 public class RichiestaFotoController {
@@ -43,10 +42,11 @@ public class RichiestaFotoController {
 		if(!bd.hasErrors()) {
 			this.richiestaFotoService.inserisci(rf);
 			model.addAttribute("richiestaFoto", rf);			//rf come secondo parametro,usare service?
-			return "home.html";
+			return "richiestaFoto.html";
 		}
 		else {
-			return "richiestaFoto.html";
+			model.addAttribute("richiestaFoto", rf);
+			return "richiestaFotoForm.html";
 		}
 	}
 	

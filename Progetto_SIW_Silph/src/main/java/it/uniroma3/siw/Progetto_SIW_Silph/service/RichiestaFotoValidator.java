@@ -16,9 +16,9 @@ public class RichiestaFotoValidator implements Validator{
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nomeUtente", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "required");
+	public void validate(Object target, Errors error) {
+		ValidationUtils.rejectIfEmptyOrWhitespace(error, "nomeUtente", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(error, "email", "required");
 	
 	}
 
