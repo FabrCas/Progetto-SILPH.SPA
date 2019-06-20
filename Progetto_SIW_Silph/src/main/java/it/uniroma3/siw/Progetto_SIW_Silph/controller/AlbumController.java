@@ -86,7 +86,6 @@ public class AlbumController {
 					System.out.println("Fotografia"+f1);
 				}
 			}
-
 			if(IdfotografiAlbum!=null) {
 				for(Long idFotografo:IdfotografiAlbum ) {
 					Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
