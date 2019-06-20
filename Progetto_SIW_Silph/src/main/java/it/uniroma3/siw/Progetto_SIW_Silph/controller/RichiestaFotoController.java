@@ -31,17 +31,27 @@ public class RichiestaFotoController {
 	@Autowired 
 	RichiestaFotoValidator richiestaFotoValidator;
 	
+	List<Long> fotoRichieste;
 	
 	
-	
-	//utente......requestparameter?
 	@RequestMapping(value="/richiestaFoto", method=RequestMethod.POST)
 	public String newRichiestaFoto(@Valid @ModelAttribute("richiestaFoto") RichiestaFoto rf,
 			Model model, BindingResult bd) {
+		//inizio stampe per la verifica su console del coretto funzionamento
+		for(Long f: this.fotoRichieste) {
+			System.out.println(f);
+		}
+		//fine stampa
 		this.richiestaFotoValidator.validate(rf, bd);
 		if(!bd.hasErrors()) {
+			if(fotoRichieste!=null) {
+				for(Long nomeFotografia:fotoRichieste) {
+					Fotografia f= this.fotografiaService.FotografiaPerId(nomeFotografia);
+					rf.addFotografia(f);
+				}
+			}
 			this.richiestaFotoService.inserisci(rf);
-			model.addAttribute("richiestaFoto", rf);			//rf come secondo parametro,usare service?
+			model.addAttribute("richiestaFoto", rf);		
 			return "richiestaFoto.html";
 		}
 		else {
@@ -76,17 +86,18 @@ public class RichiestaFotoController {
 	@RequestMapping(value="/addRichiesta", method= RequestMethod.POST)
 public String addRichiesta(@RequestParam (required=false, value="fotografieScelte")List<Long> valoriFotografie,
 		Model model) {
+		
 	RichiestaFoto richiestaFoto= new RichiestaFoto();
 	if(valoriFotografie!=null) {
-		for(Long nomeFotografia:valoriFotografie) {
-			Fotografia f= this.fotografiaService.FotografiaPerId(nomeFotografia);
-			richiestaFoto.addFotografia(f);
-		}
+		this.fotoRichieste=valoriFotografie;
 	}
 	else {
 		return "home.html";
 	}
 	model.addAttribute("richiestaFoto", richiestaFoto);
+	for(Fotografia f: richiestaFoto.getFotografie()) {
+		System.out.println(f.getId());
+	}
 	return "richiestaFotoForm.html";
 }
 }

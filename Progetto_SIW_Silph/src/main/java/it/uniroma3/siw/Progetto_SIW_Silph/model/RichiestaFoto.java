@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 
 @Entity
 public class RichiestaFoto{
@@ -49,7 +51,7 @@ public class RichiestaFoto{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	@ModelAttribute("getFotografie")
 	public List<Fotografia> getFotografie() {
 		return fotografie;
 	}

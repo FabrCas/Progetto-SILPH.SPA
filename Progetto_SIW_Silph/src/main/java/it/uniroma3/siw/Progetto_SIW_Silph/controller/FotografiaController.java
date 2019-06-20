@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Album;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografia;
 import it.uniroma3.siw.Progetto_SIW_Silph.model.Fotografo;
+import it.uniroma3.siw.Progetto_SIW_Silph.model.RichiestaFoto;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.AlbumService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaService;
 import it.uniroma3.siw.Progetto_SIW_Silph.service.FotografiaValidator;

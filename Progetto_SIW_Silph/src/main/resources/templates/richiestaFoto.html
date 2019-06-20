@@ -20,8 +20,6 @@ head {
 	
 	
 }
-
-
 </style>
   </head>
   <body>
@@ -53,7 +51,8 @@ head {
 		<ul>
 			<li th:each="fotografia: ${richiestaFoto.fotografie}">
 			
-			<img src="${fotografia.URLfoto}" alt="${fotografia.descrizione}">
+			<img th:src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"
+			 style="width:104px;height:142px;" >
 			</li>
 		</ul>
 	</div>
@@ -62,4 +61,3 @@ head {
 	</div>
 </body>
 </html>
-
