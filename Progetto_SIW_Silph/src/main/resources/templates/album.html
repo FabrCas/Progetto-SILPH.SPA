@@ -18,6 +18,15 @@ head {
 	
 }
 
+img {
+width: 104px;
+height: 142px;
+}
+
+li{
+display: inline-block;
+}
+
 
 </style>
     
@@ -50,7 +59,7 @@ head {
 		<h4>Fotografie dell'album :</h4>
 		<ul>
 			<li th:each="fotografia : ${album.fotografie}">
-			<img th:src="${fotografia?.URLfoto}" alt="${fotografia?.descrizione}">
+			<img th:src="${fotografia?.URLfoto}" alt="${fotografia?.descrizione} ">
 			</li>
 		</ul>
 	</td>
