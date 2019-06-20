@@ -103,7 +103,7 @@ public class AlbumController {
 					System.out.println(a.getFotografie().contains(fotografiaAlbum));
 				}
 			}
-			model.addAttribute("album", this.albumService.AlbumPerId(id));
+			model.addAttribute("album", a);
 			return "album.html";
 		}else {
 			model.addAttribute("albums", this.albumService.tuttiGliAlbum());

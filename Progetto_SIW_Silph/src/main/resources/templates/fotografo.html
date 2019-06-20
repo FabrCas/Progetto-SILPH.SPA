@@ -39,7 +39,8 @@ head {
 		<h4>Fotografie :</h4>
 		<ul>
 			<li th:each="fotografia: ${fotografo.fotografie}"><img
-				src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"></li>
+				th:src="${fotografia.URLfoto}" alt="${fotografia.descrizione}"
+				style="width:104px;height:142px;"></li>
 		</ul>
 		<h4>Album in cui ha partecipato :</h4>
 		<ul>

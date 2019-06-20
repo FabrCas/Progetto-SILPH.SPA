@@ -37,25 +37,19 @@ public class FotografoController {
 	@Autowired
 	private FotografiaService fotografiaService;
 	
+	List<Long> IdfotografieFotografo;
+	List<Long> IdAlbumFotografo;
+	
 	@RequestMapping(value="/fotografo", method= RequestMethod.POST )
 	public String newFotografo(@RequestParam (required=false, value="albumsScelti") List<Long> valoriAlbums,
 			@RequestParam (required=false, name="fotografieScelte") List<Long> valoriFotografie,
 			@Valid @ModelAttribute("fotografo") Fotografo fotografo,
 			Model model, BindingResult bindingResult){
+		this.IdAlbumFotografo=valoriAlbums;
+		this.IdfotografieFotografo=valoriFotografie;
 		this.fotografoValidator.validate(fotografo, bindingResult);
 		if(!bindingResult.hasErrors()) {
-			if(valoriAlbums!=null) {
-			for(Long idAlbum:valoriAlbums ) {
-				Album albumFotografo= this.albumService.AlbumPerId(idAlbum);
-				fotografo.addAlbum(albumFotografo);
-			}
-			}
-			if (valoriFotografie!=null){
-			for(Long idFotografia:valoriFotografie) {
-				Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
-				fotografo.addFotografia(fotografiaAlbum);
-			}
-			}
+		
 			this.fotografoService.inserisci(fotografo);
 			model.addAttribute("fotografi", fotografoService.tuttiIFotografi());
 			return "fotografi.html";
@@ -71,7 +65,20 @@ public class FotografoController {
 	@RequestMapping(value = "/fotografo/{id}", method = RequestMethod.GET)
 	public String getFotografo(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
-			model.addAttribute("fotografo", this.fotografoService.FotografoPerId(id));
+			Fotografo f= this.fotografoService.FotografoPerId(id);
+			if(IdAlbumFotografo!=null) {
+				for(Long idAlbum:IdAlbumFotografo ) {
+					Album albumFotografo= this.albumService.AlbumPerId(idAlbum);
+					f.addAlbum(albumFotografo);
+				}
+				}
+				if (IdfotografieFotografo!=null){
+				for(Long idFotografia:IdfotografieFotografo) {
+					Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
+					f.addFotografia(fotografiaAlbum);
+				} 
+				}
+			model.addAttribute("fotografo", f);
 			return "fotografo.html";
 		}else {
 			model.addAttribute("fotografi", this.fotografoService.tuttiIFotografi());
