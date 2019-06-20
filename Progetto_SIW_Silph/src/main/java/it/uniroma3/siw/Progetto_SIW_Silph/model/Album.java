@@ -33,7 +33,7 @@ public class Album {
 
 	public Album() {
 		this.fotografi= new ArrayList <Fotografo>();
-		this.fotografie= new ArrayList<Fotografia>();
+		this.fotografie= new ArrayList <Fotografia>();
 	}
 	
 	public String getNome() {

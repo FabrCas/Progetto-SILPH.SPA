@@ -41,14 +41,19 @@ public class AlbumController {
 			@RequestParam (required=false, name="fotografieScelte")List<Long> valoriFotografie, @Valid @ModelAttribute("album") Album album,
 			Model model, BindingResult bindingResult){
 		//inizio stampe per la verifica su console del coretto funzionamento
+		if(valoriFotografi!=null) {
 				for(Long f: valoriFotografi) {
 					System.out.println("Fotografo"+f);
 				}
+		}
 				//fine stampa
+		
 				//inizio stampe per la verifica su console del coretto funzionamento
+		if(valoriFotografie!=null) {
 				for(Long f1: valoriFotografie) {
 					System.out.println("Fotografia"+f1);
 				}
+		}
 				//fine stampa
 				IdfotografieAlbum=valoriFotografie;
 				IdfotografiAlbum=valoriFotografi;
@@ -71,25 +76,33 @@ public class AlbumController {
 	public String getAlbum(@PathVariable ("id") Long id, Model model) {
 		if(id!=null) {
 			Album a=this.albumService.AlbumPerId(id);
-			for(Long f: IdfotografiAlbum) {
-				System.out.println("Fotografo"+f);
+			if(IdfotografiAlbum!=null) {
+				for(Long f: IdfotografiAlbum) {
+					System.out.println("Fotografo"+f);
+				}
 			}
-			for(Long f1: IdfotografieAlbum) {
-				System.out.println("Fotografia"+f1);
+			if(IdfotografieAlbum!=null) {
+				for(Long f1: IdfotografieAlbum) {
+					System.out.println("Fotografia"+f1);
+				}
 			}
-			
+
 			if(IdfotografiAlbum!=null) {
 				for(Long idFotografo:IdfotografiAlbum ) {
 					Fotografo fotografoAlbum= this.fotografoService.FotografoPerId(idFotografo);
 					a.addFotografo(fotografoAlbum);
+					System.out.println(fotografoAlbum.getNome());
+					System.out.println(a.getFotografi().contains(fotografoAlbum));
 				}
-				}
-				if (IdfotografieAlbum!=null){
+			}
+			if (IdfotografieAlbum!=null){
 				for(Long idFotografia:IdfotografieAlbum) {
 					Fotografia fotografiaAlbum= this.fotografiaService.FotografiaPerId(idFotografia);
 					a.addFotografia(fotografiaAlbum);
+					System.out.println(fotografiaAlbum.getNome());
+					System.out.println(a.getFotografie().contains(fotografiaAlbum));
 				}
-				}
+			}
 			model.addAttribute("album", this.albumService.AlbumPerId(id));
 			return "album.html";
 		}else {
@@ -97,7 +110,7 @@ public class AlbumController {
 			return "albums.html";
 		}
 	}
-	
+
 	//tutti gli album, per la home
 	@RequestMapping(value="/allAlbum")
 	public String allAlbum(Model model){
